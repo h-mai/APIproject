@@ -47,6 +47,7 @@ I want to be able to save my favourite results and be able to view them at a lat
 
 Extras 
 
+Invite/Share favourites with friends
 Local weather dependant for each result (location dependant)
 PT result for chosen result 
 Website link to chosen location
