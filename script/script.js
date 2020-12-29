@@ -1,23 +1,27 @@
 var suburbInput = document.querySelector("input");
 var suburb = suburbInput.value;
-console.log(suburbInput);
-console.log(suburb);
+//console.log(suburbInput.value);
+//console.log(suburb);
 
 suburbInput.addEventListener('keypress', function (e){
     if (e.key === 'Enter') {
     suburb = suburbInput.value;
-    console.log(suburbInput.value);
-    console.log(suburb);
+    //console.log(suburbInput.value);
+    //console.log(suburb);
+    fetchData();
     }
-})
+});
 
-console.log(suburbInput.value);
-console.log(suburb);
+//console.log(suburbInput.value+"14");
+//console.log(suburb+"15");
 
-var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=cafe+in" + suburb + "&key="
+//var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=cafe+in" + suburb + "&key=";
 
 function fetchData() {
-    fetch("https://maps.googleapis.com/maps/api/place/textsearch/json?query=cafe+in+3031&key=") 
+    var type = "bar";
+    var location = suburb+"+Victoria";
+    var radius = "10000";
+    fetch("https://pfotis-eval-test.apigee.net/v1/cors-mock?query="+type+"%2Bin%2B"+location+"&radius="+radius+"&key=")
     .then(response => {
         if (!response.ok) {
             throw Error("ERROR");
@@ -39,7 +43,7 @@ function fetchData() {
     })
 }
 
-fetchData()
+
 
 //loadJSON('https://api.foursquare.com/v2/venues/explore?client_id=FS2133IMEESBV1WI3N3K1NLROKV31WHAGORBF2Z5SMYJOGUA&client_secret=UXEACQWUXHFOCXND2O5MYOHXYYLXYBWM5KRF3DAMRQWGGMU4&v=20180323&limit=1&ll=-37.7941207,144.9276659&query=cafe')
 
