@@ -45,7 +45,7 @@ submitBtn.addEventListener("click", function(e) {
     console.log(location);
 
     /* query URL that returns a CORS error:
-    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+"&key=AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
+    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+"&key=XXXXXXXX";
     console.log(queryURL);
     */
 
