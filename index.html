@@ -5,20 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/style.css">
 
     <title>Melbourne Reboot</title>
 </head>
 
 <body>
     <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">
-                <h1>Melbourne Reboot</h1>
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Home</a></li>
-                <li><a href="badges.html">About Us</a></li>
-                <li><a href="badges.html">Favourites</a></li>
+        <div class="nav-wrapper deep-orange lighten-3">
+            <a href="#" class="brand-logo">Melbourne Reboot</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down deep-orange lighten-3">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="favourites.html">Favourites</a></li>
             </ul>
         </div>
     </nav>
@@ -27,103 +26,159 @@
 
     </header>
 
-    <div>
-        <img>
+    <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="assets\images\banner size\cafeImage.jpg">
+            <div class="carousel-fixed-item right-align">
+                <h6 class="white-text credit">Image by Afta Putta Gunawan</h6>
+            </div>
+        </a>
+        <a class="carousel-item" href="#two!"><img src="assets\images\banner size\barImage.jpg">
+            <div class="carousel-fixed-item right-align">
+                <h6 class="white-text credit">Image by Elevate</h6>
+            </div>
+        </a>
+        <a class="carousel-item" href="#three!"><img src="assets\images\banner size\skylineImage.jpg">
+            <div class="carousel-fixed-item right-align">
+                <h6 class="white-text credit">Image by James Wheeler</h6>
+            </div>
+        </a>
+        <a class="carousel-item" href="#four!"><img src="assets\images\banner size\beachImage.jpg">
+            <div class="carousel-fixed-item right-align">
+                <h6 class="white-text credit">Image by Rachel Claire</h6>
+            </div>
+        </a>
+        <a class="carousel-item" href="#five!"><img src="assets\images\banner size\streetartImage.jpg">
+            <div class="carousel-fixed-item right-align">
+                <h6 class="white-text credit">Image by Shone Jai</h6>
+            </div>
+        </a>
+        <a class="carousel-item" href="#six!"><img src="assets\images\banner size\vintageImage.jpg">
+            <div class="carousel-fixed-item right-align">
+                <h6 class="white-text credit">Image by Suzy Hazelwood</h6>
+            </div>
+        </a>
     </div>
+
+    <h5 class="center-align">Lets Reboot Melbournes Economy</h5>
+    <p class="center-align">What would you like to do today? Select two preferences below and search for inspiration in
+        your local community.</p>
 
     <section>
 
         <div class="row">
             <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
+                <div class="row inputRow">
+                    <div id="suburbInput" class="input-field col l5">
+                        <label for="suburb">
+                            <h6>Suburb</h6>
+                        </label>
                         <input id="suburb" type="text" class="validate">
-                        <label for="suburb">Suburb</label>
                     </div>
-                    <form action="#">
-                        <p class="range-field">
-                            <input type="range" id="test5" min="0" max="50" />
-                        </p>
-                    </form>
+                    <div>
+                        <form action="#" id="radiusTitle">
+                            <label for="radius">
+                                <h6 class="center-align">Radius Kms</h6>
+                            </label>
+                            <p class="col l5 range-field">
+                                <input type="range" id="test5" min="0" max="50" />
+                            </p>
+                        </form>
+                    </div>
                 </div>
-                <form action="#">
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Art and Culture</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Cafes</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Entertainment</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Tourist Attractions</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Park</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Casino</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Nightclub</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>Restaurant</span>
-                        </label>
-                    </p>
+                <div class="row">
+                    <form id="checkBoxes" action="#">
+                        <div class="col m4">
+                            <p>
+                                <label>
+                                    <input type="checkbox" value = "Art and Culture"/>
+                                    <span>Art and Culture</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="cafe" />
+                                    <span>Cafes</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="entertainment" />
+                                    <span>Entertainment</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col m4">
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="tourist_attraction"/>
+                                    <span>Tourist Attractions</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="park"/>
+                                    <span>Park</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="casino" />
+                                    <span>Casino</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col m4">
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="night_club"/>
+                                    <span>Nightclub</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="restaurant"/>
+                                    <span>Restaurant</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" value="store" />
+                                    <span>Shopping</span>
+                                </label>
+                            </p>
+                        </div>
+                </div>
+                <div class="center-align">
                     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                     </button>
+                </div>
     </section>
     <footer>
-        <footer class="page-footer">
+        <footer class="page-footer deep-orange lighten-3">
             <div class="container">
-              <div class="row">
-                <div class="col l6 s12">
-                  <h5 class="white-text">Melbourne Weather</h5>
-                  <p class="grey-text text-lighten-4">Current Day</p>
-                  <p class="grey-text text-lighten-4">Weather</p>
-                  <p class="grey-text text-lighten-4">Icon</p>
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Weather Date Temp Icon</h5>
+
+                    </div>
+
+
                 </div>
-                
-                 
-                </div>
-              </div>
+            </div>
             </div>
             <div class="footer-copyright">
-              <div class="container">
-              © 2021 Melbourne Reboot
-              
-              </div>
-            </div>
-          </footer>
-              
-    </footer>
+                <div class="container">
+                    © 2021 Melbourne Reboot
 
+                </div>
+            </div>
+        </footer>
+
+    </footer>
+    <script src="assets/carousel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+
 </body>
 
 </html>
