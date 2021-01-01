@@ -113,7 +113,7 @@ submitBtn.addEventListener("click", function(e) {
                         console.log(photoSearchURLList);
 
                         function fetchPhoto () {
-                            for (var i=0; i<= 1; i++) {
+                            for (var i=0; i<= 9; i++) {
                                 fetch(photoSearchURLList[i])
                                 .then(response => {
                                     if(!response.ok) {
