@@ -3,6 +3,8 @@
  var placeFotoRef = [];
  var photoSearchURLList = [];
  var photoURLList = [];
+ var placeId = [];
+ var apiResults = [];
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -44,125 +46,62 @@ submitBtn.addEventListener("click", function(e) {
     var location = suburb+"+Victoria";
     console.log(location);
 
-    /* query URL that returns a CORS error:
-    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+"&key=XXXXXXXX";
-    console.log(queryURL);
-    */
 
     // Define the queryURL with the values selected by the user
-    var queryURL = "https://pfotis-eval-test.apigee.net/v1/cors-mock?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+ "&key=XXXXXXXXXXX";
+    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+"&key=XXXXXXXXXXXXX";
+    // var queryURL = "https://pfotis-eval-test.apigee.net/v1/cors-mock?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+ "&key=XXXXXXXXXXXXX";
     console.log(queryURL);
 
     // Define the function to run the Google Place Search API query and get the places_ID
-    function fetchId() {
-        fetch(queryURL)
+    async function fetchId() {
+        await fetch(queryURL)
         .then(response => {
-            if (!response.ok) {
-                throw Error("ERROR");
-            }
-                return response.json();
+        if(!response.ok) {
+            throw Error("ERROR");
+        }
+            return response.json();
         })
         .then(res => {
-            console.log(res.results);
-            var placesId = res.results.map(place => {
-                return place.place_id;
-            })
-
-            console.log(placesId);
-
-            //Create a list with the ten URLs to call the Google Place Detail API
-            queryURLList = [];
-            for (var i=0; i<= 9; i++) {
-                var placeDetailsURL = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placesId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=XXXXXXXXX"
-                console.log(placeDetailsURL)
-                queryURLList.push(placeDetailsURL);
-            }
-
-            console.log(queryURLList); 
-
-            // Define a function to call the Google Place Detail API for each result
-            function fetchData () {
-                for (var i=0; i<= 9; i++) {
-                    fetch(queryURLList[i])
-
-                    .then(response => {
-                        if(!response.ok) {
-                            throw Error("ERROR");
-                        }
-                            return response.json();      
-                    })
-
-                    .then(res => {
-                        console.log(res);
-
-                        //Push to array the each place details
-                        placeDetails.push(res.result);
-                        console.log(placeDetails);
-
-                        // Push to array each photo reference
-                        placeFotoRef.push(res.result.photos[0].photo_reference);
-                        console.log(placeFotoRef);
-
-                        // Define URL to call Google Places Photo API to retrieve the src of the imge
-                        photoSearchURLList = placeFotoRef.map(myfunction)
-                        
-                        function myfunction(x){
-                            return "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + x + "&key=XXXXXX"
-                        }
-                        
-                        console.log(photoSearchURLList);
-
-                        function fetchPhoto () {
-                            for (var i=0; i<= 9; i++) {
-                                fetch(photoSearchURLList[i])
-                                .then(response => {
-                                    if(!response.ok) {
-                                        throw Error("ERROR");
-                                    }
-                                       return response;
-
-                                })
-                                .then(response => {
-                                    console.log(response.url);
-                                    photoURLList.push(response.url);
-                                    console.log(photoURLList);
-                                })  
-                            }
-                        }
-                        //Call the Google Place Photo API
-                        fetchPhoto()
-                    })
-                }                 
-            }                    
-            //Call the Google Place Detail API
+            console.log(res);
+            for (var i=0; i<= 9; i++) 
+            placeId.push(res.results[i].place_id)
+            console.log(placeId)
             fetchData()
         })
-    }   
-    // Call the Google Place Search API query
-    fetchId()
-    
-})
-
-
-
-/*Draft code to display the place details the card
-
-                return `<div>
-                <p>Name: ${place.photos.photo_reference} </p>
-                <p>Name: ${place.name} </p>
-                <p>Address: ${place.formatted_address}</p>
-                <p>Rating: ${place.rating}</p>
-                <p>Rating: ${place.url}</p>
-                </div>`    
-            })
-            document.querySelector(".card-content").childNodes[1].innerHTML =  ....;
-        })
     }
-*/
+        
+   fetchId()
 
-    /* Code to move from one html page to the other
-    window.location.href = "page2.html";
-    */
+    console.log(placeId)
+
+
+    // Define a function to call the Google Place Detail API for each result 
+    async function fetchData () {
+        for (var i=0; i<= 9; i++) 
+        await fetch("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=XXXXXXXXXXXXX")
+        .then(response => {
+            if(!response.ok) {
+                throw Error("ERROR");
+            }
+                return response.json();      
+        })
+        .then(res => {
+            console.log(res);
+
+            // Call the Google Phot API
+            var photoResult = fetch("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+res.result.photos[0].photo_reference+"&key=XXXXXXXXXXXXX")
+            // console.log(photoResult);
+            photoResult.then(console.log);
+            // Can not access the RESPONSE!!!!!
+            
+            apiResults.push({
+                results: res.result,
+                // photoUrl: TBC!!!,
+            })
+
+            console.log(apiResults);
+        })
+        }
 
 
 
