@@ -1,8 +1,4 @@
  // Create variable to store each place details
- var placeDetails = [];
- var placeFotoRef = [];
- var photoSearchURLList = [];
- var photoURLList = [];
  var placeId = [];
  var apiResults = [];
 
@@ -18,8 +14,7 @@ submitBtn.addEventListener("click", function(e) {
     var radius = document.getElementById("test5").value;
     var types = document.querySelectorAll('input[type="checkbox"]');
 
-    console.log(suburb);
-    console.log(radius);
+    console.log(suburb, radius);
     console.log(types);
 
     //Get the types checked by the user into an array
@@ -30,12 +25,14 @@ submitBtn.addEventListener("click", function(e) {
             checkedTypes.push(types[i].value);
         }
     }
+
     console.log(checkedTypes);
 
     //Stringify the array of the checked types
     checkedTypes = checkedTypes.map(function(e) {
         return JSON.stringify(e);
     });
+
     console.log(checkedTypes);
 
     //Edit the stringified array to be used in the query URL
@@ -48,8 +45,8 @@ submitBtn.addEventListener("click", function(e) {
 
 
     // Define the queryURL with the values selected by the user
-    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+"&key=XXXXXXXXXXXXX";
-    // var queryURL = "https://pfotis-eval-test.apigee.net/v1/cors-mock?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+ "&key=XXXXXXXXXXXXX";
+    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+"&key=XXXXXX";
+    // var queryURL = "https://pfotis-eval-test.apigee.net/v1/cors-mock?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+ "&key=XXXXXX";
     console.log(queryURL);
 
     // Define the function to run the Google Place Search API query and get the places_ID
@@ -74,11 +71,10 @@ submitBtn.addEventListener("click", function(e) {
 
     console.log(placeId)
 
-
     // Define a function to call the Google Place Detail API for each result 
     async function fetchData () {
         for (var i=0; i<= 9; i++) 
-        await fetch("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=XXXXXXXXXXXXX")
+        await fetch("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=XXXXXX")
         .then(response => {
             if(!response.ok) {
                 throw Error("ERROR");
@@ -88,20 +84,24 @@ submitBtn.addEventListener("click", function(e) {
         .then(res => {
             console.log(res);
 
-            // Call the Google Phot API
-            var photoResult = fetch("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+res.result.photos[0].photo_reference+"&key=XXXXXXXXXXXXX")
-            // console.log(photoResult);
-            photoResult.then(console.log);
-            // Can not access the RESPONSE!!!!!
-            
-            apiResults.push({
-                results: res.result,
-                // photoUrl: TBC!!!,
+            // Call the Google Photo API (Note: An issue arises if there is no photos in the res)
+            fetch("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+res.result.photos[0].photo_reference+"&key=XXXXXX")
+            .then(response => {
+                if(!response.ok) {
+                    throw Error("ERROR");
+                }
+
+                //Store the results 
+                apiResults.push({
+                    results: res.result,
+                    photoUrl: response.url,
             })
 
             console.log(apiResults);
         })
-        }
+        })
+    }
+})
 
 
 
