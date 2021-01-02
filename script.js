@@ -60,20 +60,20 @@ submitBtn.addEventListener("click", function(e) {
         })
         .then(res => {
             console.log(res);
-            for (var i=0; i<= 9; i++) 
+            for (var i=0; i<= 10; i++) 
             placeId.push(res.results[i].place_id)
             console.log(placeId)
-            fetchData()
+            fetchData();
         })
     }
         
-   fetchId()
+   fetchId();
 
     console.log(placeId)
 
     // Define a function to call the Google Place Detail API for each result 
     async function fetchData () {
-        for (var i=0; i<= 9; i++) 
+        for (var i=0; i<= 10; i++) 
         await fetch("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=XXXXXX")
         .then(response => {
             if(!response.ok) {
