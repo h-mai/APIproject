@@ -3,7 +3,7 @@
  var apiResults = [];
  
 // add the key here 
- var Key = "";
+ var Key = "AIzaSyCsZbpadU8YUtcRxOdtqdHcNGdW062AGnw";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -111,7 +111,49 @@ submitBtn.addEventListener("click", function(e) {
 
 
 
+function informationContainer(imageLink, title, array){
+    categories = ['', '', 'Rating : ',];
+    var firstRow = document.querySelector(".row");
 
+    var divContainer = document.createElement("div");
+    divContainer.className="col s12 m4 l2";
+    firstRow.appendChild(divContainer);
+    
+    var cardDiv = document.createElement("div");
+    cardDiv.className="card";
+    divContainer.appendChild(cardDiv);
+
+    var cardImgDiv = document.createElement("div");
+    cardImgDiv.className="card-image";
+    cardDiv.appendChild(cardImgDiv);
+
+    var image = document.createElement("img");
+    image.setAttribute("src", imageLink);
+    image.setAttribute("onerror", "this.onerror=null;this.src='./5aykshsh-thumb.gif'");
+    cardImgDiv.appendChild(image);
+
+    var cardContentDiv = document.createElement("div");
+    cardContentDiv.className="card-content";
+    cardDiv.appendChild(cardContentDiv);
+
+    var cardTitle = document.createElement("h6");
+    cardTitle.className = "card-title";
+    cardTitle.appendChild(document.createTextNode(title));
+    cardContentDiv.appendChild(cardTitle);
+
+    for(var i=0; i<categories.length; i++){
+        var cardInfo = document.createElement("div");
+        cardInfo.appendChild(document.createTextNode(categories[i] + array[i]));
+        cardContentDiv.appendChild(cardInfo);
+    }
+
+    var link = document.createElement("a");
+    link.appendChild(document.createTextNode("directions"));
+    link.setAttribute("href", array[3]);
+    link.setAttribute("target", "_blank");
+    cardContentDiv.appendChild(link);
+
+}
 
 
 
