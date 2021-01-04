@@ -3,7 +3,7 @@
  var apiResults = [];
  
 // add the key here 
- var Key = "AIzaSyCsZbpadU8YUtcRxOdtqdHcNGdW062AGnw";
+ var Key = "";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
