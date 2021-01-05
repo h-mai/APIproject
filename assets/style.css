@@ -23,6 +23,20 @@
 #checkBoxes{
     margin-left: 180px;
 }
-.btn{
-    align-items: center;
+#loginAlign{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+#loginBtn{
+    margin-bottom: 20px;
+}
+#saveBtn{
+    margin-bottom: 20px;
+}
+#showRow{
+  margin-left: 10px;  
+}
+#favLoginTitle{
+    margin-top: 30px;
+
 }
