@@ -1,12 +1,12 @@
+/* All pages */
 
-.brand-logo{
-    padding-left: 20px !important;
-    font-size: x-large;
-    font-weight: 600;
-}
 #logo{
-    height: 100%;
+    height: 90%;
+    margin-top: 4px;
 }
+
+/* Index.html */
+
 .carousel{
     margin-bottom: 20px;
 }
@@ -21,32 +21,43 @@
 #checkBoxes{
     margin-left: 180px;
 }
-#loginAlign{
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-#loginBtn{
-    margin-bottom: 20px;
-}
 #saveBtn{
     margin-bottom: 20px;
 }
 #showRow{
-  margin-left: 10px;  
+    margin-left: 10px;  
+    margin-right: 10px;
 }
+
+/* Favourites page */
+
 #favLoginTitle{
     margin-top: 30px;
 }
-.btn{
-    align-items: center;
+#loginAlign{
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
-
-i.fas{
+#favForm{
+    margin-left: 500px;
+}
+#loginBtn{
+    margin-bottom: 20px;
+}
+i.fa{
     color: #ff8a65;
 }
 
+/* About Us page */
+
 #aboutUsCard{
     max-width: 70%;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1200px) {
+    #favForm{
+        margin-left: 400px;
 }
 @media only screen and (max-width: 990px) {
     .inputRow{
@@ -60,6 +71,14 @@ i.fas{
     }
     #aboutUsCard{
         max-width: 90%;
+    }   
+    #favForm{
+        margin-left: 175px;
+    }
+}
+@media only screen and (max-width: 680px) {
+    #favForm{
+        margin-left: 50px;
     }
 }
 @media only screen and (max-width: 595px) {
@@ -71,10 +90,13 @@ i.fas{
     }
     #radius{
         margin-left: 0px;
-}
-#aboutUsCard{
-    max-width: 100%;
-}
+    }
+    #aboutUsCard{
+        max-width: 100%;
+    }
+    #favForm{
+        margin-left: 10px;
+    }
 }
 @media only screen and (max-width: 420px) {
     .inputRow{
@@ -88,7 +110,7 @@ i.fas{
     }
     #radius{
         margin-left: 0px;
-}
+    }
 }
 
 

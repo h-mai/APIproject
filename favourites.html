@@ -5,104 +5,94 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
- 
-  <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
-
-
+  <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
   <title>Melbourne Reboot</title>
 </head>
 
 <body>
-  <nav>
-    <div class="nav-wrapper deep-orange lighten-3">
-
-      <a href="#" class="brand-logo">Melbourne Reboot</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-
-      <ul id="nav-mobile" class="right hide-on-med-and-down deep-orange lighten-3">
+  <header>
+    <nav>
+      <div class="nav-wrapper deep-orange lighten-3">
+        <a href="#" class="brand-logo"></a>
+        <img id="logo" src="assets\images\Melbourne Reboot Logo\melbourne reboot logo_resized.png">
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down deep-orange lighten-3">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutUs.html">About Us</a></li>
+          <li class="active"><a href="#">Favourites</a></li>
+        </ul>
+      </div>
+      <ul class="sidenav" id="mobile-demo">
         <li><a href="index.html">Home</a></li>
         <li><a href="aboutUs.html">About Us</a></li>
         <li class="active"><a href="#">Favourites</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="aboutUs.html">About Us</a></li>
-    <li class="active"><a href="#">Favourites</a></li>
-  </ul>
-
-  </head>
-
-  <body>
-    <div class="row">
-      <form class="col s12 offset-m3">
-        <h6 id="favLoginTitle">Enter your User Name and Password to view favorites</h6>
-        <div class="row">
-          <div class="input-field col s12 l6">
-            <input id="login_name" type="text" class="validate">
-            <label for="login_name">User Name</label>
-          </div>
+  <div class="row">
+    <form class="col s12 m7 offset-m3" id="favForm">
+      <h6 id="favLoginTitle">Enter your User Name and Password</h6>
+      <div class="row">
+        <div class="input-field col s10 l6">
+          <input id="login_name" type="text" class="validate">
+          <label for="login_name">User Name</label>
         </div>
-        <div class="row">
-          <div class="input-field col s12 l6">
-            <input id="loginPassword" type="password" class="validate">
-            <label for="loginPassword">Password</label>
-          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 l6">
+          <input id="loginPassword" type="password" class="validate">
+          <label for="loginPassword">Password</label>
         </div>
-      </form>
-    </div>
-    <div class="center-align">
-      <button class="btn waves-effect waves-light" id="loginBtn" type="submit" name="action">Login</button>
-    </div>
-    <div class="row hide">
-      <div class="col s12 m4 l2">
-        <div class="card">
-          <div class="card-image">
-            <img src="#">
-          </div>
-          <div class="card-content">
-            <h6 class="card-title">Card Title</h6>
-            <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
+      </div>
+    </form>
+  </div>
+  <div class="center-align">
+    <button class="btn waves-effect waves-light" id="loginBtn" type="submit" name="action">Login</button>
+  </div>
+  <div class="row hide">
+    <div class="col s12 m4 l2">
+      <div class="card">
+        <div class="card-image">
+          <img src="#">
+        </div>
+        <div class="card-content">
+          <h6 class="card-title">Card Title</h6>
+          <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
         </div>
       </div>
     </div>
+  </div>
 
-
-    <footer>
-      <footer class="page-footer deep-orange lighten-3">
+  <footer>
+    <footer class="page-footer deep-orange lighten-3">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Weather Date Temp Icon</h5>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="footer-copyright">
         <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">Weather Date Temp Icon</h5>
+          © 2021 Melbourne Reboot
 
-            </div>
-
-
-          </div>
         </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-            © 2021 Melbourne Reboot
-
-          </div>
-        </div>
-      </footer>
-
+      </div>
     </footer>
-    <script src="login.js"></script>
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="login.js"></script>
+  <script src="script.js"></script>
+  <script src="assets/carousel.js"></script>
+</body>
 
 </html>
