@@ -34,7 +34,7 @@ async function fetchWeather () {
 
     // src = "assets/" + resp.DailyForecasts[0].Day.Icon + ".png"
     
-    var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+    var currentDate = moment().format('MMMM Do YYYY');
     var minTemp = "Min " + Math.trunc(resp.DailyForecasts[0].Temperature.Minimum.Value) + " °";
     var maxTemp = "Max " + Math.trunc(resp.DailyForecasts[0].Temperature.Maximum.Value) + " °";
     var weatherText = resp.DailyForecasts[0].Day.IconPhrase;
