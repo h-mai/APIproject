@@ -4,6 +4,7 @@ var apiResults = [];
 
 // add the key here 
 
+
  var Key = "";
 
 //Select homepage submit button
@@ -106,13 +107,102 @@ submitBtn.addEventListener("click", function (e) {
                 photoUrl: photo.url,
             })
         }
+
         console.log(apiResults);
+
+        for (var i=0; i<10; i++){
+
+            console.log(apiResults[i].photoUrl);
+            console.log(apiResults[i].results.formatted_address);
+            console.log(apiResults[i].results.name);
+            console.log(apiResults[i].results.opening_hours.weekday_text[0]);
+            console.log(apiResults[i].results.rating);
+            console.log(apiResults[i].results.url);
+
+            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, apiResults[i].results.opening_hours.weekday_text[0], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
+        }
+
 
     }
 })
 
 
 
+function informationContainer(imageLink, title, operating , address , rate , link , placeID){
+    
+    var today = moment().format('dddd')+":";
+    var tempArray = operating.split(" ");
+    console.log(tempArray);
+    var hours = "";
+
+    if(today == tempArray[0]){
+        for(var i=1; i<tempArray.length ;i++)
+            hours = hours+" "+tempArray[i];
+    }
+    var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fa fa-star-o"];
+
+    var arrayInfo = [];
+    arrayInfo.push(hours);
+    arrayInfo.push(address);
+    arrayInfo.push(rate);
+    arrayInfo.push(link);
+    categories = ['', '', 'Rating : ',];
+    var firstRow = document.querySelector(".row");
+
+    var divContainer = document.createElement("div");
+    divContainer.className="col s12 m4 l2";
+    firstRow.appendChild(divContainer);
+    
+    var cardDiv = document.createElement("div");
+    cardDiv.className="card";
+    divContainer.appendChild(cardDiv);
+
+    var cardImgDiv = document.createElement("div");
+    cardImgDiv.className="card-image";
+    cardDiv.appendChild(cardImgDiv);
+
+    var image = document.createElement("img");
+    image.setAttribute("src", imageLink);
+    image.setAttribute("onerror", "this.onerror=null;this.src='./5aykshsh-thumb.gif'");
+    cardImgDiv.appendChild(image);
+
+    var cardContentDiv = document.createElement("div");
+    cardContentDiv.className="card-content";
+    cardDiv.appendChild(cardContentDiv);
+
+    var favorite = document.createElement("i");
+    favorite.setAttribute("onclick", "toggleStar(event)");
+    favorite.className = ArrayOfClassName[4];
+    cardContentDiv.appendChild(favorite);
+
+    var cardTitle = document.createElement("h6");
+    cardTitle.className = "card-title";
+    cardTitle.appendChild(document.createTextNode(title));
+    cardContentDiv.appendChild(cardTitle);
+
+    for(var i=0; i<categories.length; i++){
+        var cardInfo = document.createElement("div");
+        var cardItag = document.createElement("i");
+        cardItag.className = ArrayOfClassName[i];
+        cardItag.appendChild(document.createTextNode(categories[i] +arrayInfo[i]));
+        cardContentDiv.appendChild(cardInfo);
+        cardInfo.appendChild(cardItag);
+    }
+
+    var linkDiv = document.createElement("a");
+    linkDiv.className = ArrayOfClassName[3];
+    linkDiv.appendChild(document.createTextNode("directions"));
+    linkDiv.setAttribute("href", arrayInfo[3]);
+    linkDiv.setAttribute("target", "_blank");
+    cardContentDiv.appendChild(linkDiv);
+
+    
+    
+}
+
+function toggleStar(event) {
+   event.target.classList.toggle("fa-star");
+}
 
 
 
