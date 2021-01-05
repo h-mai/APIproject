@@ -4,8 +4,17 @@
     font-size: x-large;
     font-weight: 600;
 }
+
+#logo{
+    height: 100%;
+}
+.carousel{
+    max-height: 500px;
+    margin-bottom: 20px;
+
 .carousel-item img{
     max-height: 350px;
+
 }
 .credit{
     padding: 2px 10px;
@@ -21,6 +30,11 @@
 .btn{
     align-items: center;
 }
+
+i.fas{
+    color: #ff8a65;
+}
+
 #aboutUsCard{
     max-width: 70%;
 }
@@ -66,4 +80,5 @@
         margin-left: 0px;
 }
 }
+
 
