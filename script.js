@@ -137,7 +137,7 @@ function informationContainer(imageLink, title, operating , address , rate , lin
         for(var i=1; i<tempArray.length ;i++)
             hours = hours+" "+tempArray[i];
     }
-    var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fas fa-star"];
+    var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fa fa-star-o"];
 
     var arrayInfo = [];
     arrayInfo.push(hours);
@@ -168,6 +168,11 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     cardContentDiv.className="card-content";
     cardDiv.appendChild(cardContentDiv);
 
+    var favorite = document.createElement("i");
+    favorite.setAttribute("onclick", "myFunction(event)");
+    favorite.className = ArrayOfClassName[4];
+    cardContentDiv.appendChild(favorite);
+
     var cardTitle = document.createElement("h6");
     cardTitle.className = "card-title";
     cardTitle.appendChild(document.createTextNode(title));
@@ -189,6 +194,15 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     linkDiv.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
 
+    
+    
+}
+
+function myFunction(event) {
+    console.log("hello");
+    console.log(event);
+   var element = document.querySelector(".fa");
+   event.target.classList.toggle("fa-star");
 }
 
 
