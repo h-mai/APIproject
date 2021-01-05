@@ -4,6 +4,9 @@
     font-size: x-large;
     font-weight: 600;
 }
+#logo{
+    height: 100%;
+}
 .carousel{
     max-height: 500px;
     margin-bottom: 20px;
@@ -25,4 +28,7 @@
 }
 .btn{
     align-items: center;
+}
+i.fas{
+    color: #ff8a65;
 }
