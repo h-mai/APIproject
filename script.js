@@ -169,7 +169,7 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     cardDiv.appendChild(cardContentDiv);
 
     var favorite = document.createElement("i");
-    favorite.setAttribute("onclick", "myFunction(event)");
+    favorite.setAttribute("onclick", "toggleStar(event)");
     favorite.className = ArrayOfClassName[4];
     cardContentDiv.appendChild(favorite);
 
@@ -198,10 +198,7 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     
 }
 
-function myFunction(event) {
-    console.log("hello");
-    console.log(event);
-   var element = document.querySelector(".fa");
+function toggleStar(event) {
    event.target.classList.toggle("fa-star");
 }
 
