@@ -111,7 +111,22 @@ submitBtn.addEventListener("click", function(e) {
 
 
 
-function informationContainer(imageLink, title, array){
+function informationContainer(imageLink, title, operating , address , rate , link , placeID){
+    
+    var today = moment().format('dddd')+":";
+    var tempArray = operating.split(" ");
+    var hours = "";
+
+    if(today == tempArray[0]){
+        for(var i=1; i<tempArray.length ;i++)
+            hours = hours+" "+tempArray[i];
+    }
+
+    var arrayInfo = [];
+    arrayInfo.push(hours);
+    arrayInfo.push(address);
+    arrayInfo.push(rate);
+    arrayInfo.push(link);
     categories = ['', '', 'Rating : ',];
     var firstRow = document.querySelector(".row");
 
@@ -143,15 +158,15 @@ function informationContainer(imageLink, title, array){
 
     for(var i=0; i<categories.length; i++){
         var cardInfo = document.createElement("div");
-        cardInfo.appendChild(document.createTextNode(categories[i] + array[i]));
+        cardInfo.appendChild(document.createTextNode(categories[i] +arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
     }
 
-    var link = document.createElement("a");
-    link.appendChild(document.createTextNode("directions"));
-    link.setAttribute("href", array[3]);
-    link.setAttribute("target", "_blank");
-    cardContentDiv.appendChild(link);
+    var linkDiv = document.createElement("a");
+    linkDiv.appendChild(document.createTextNode("directions"));
+    linkDiv.setAttribute("href", arrayInfo[3]);
+    linkDiv.setAttribute("target", "_blank");
+    cardContentDiv.appendChild(linkDiv);
 
 }
 
