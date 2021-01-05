@@ -4,7 +4,8 @@ var apiResults = [];
 
 // add the key here 
 
- var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
+
+ var Key = "";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -120,6 +121,7 @@ submitBtn.addEventListener("click", function (e) {
 
             informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, apiResults[i].results.opening_hours.weekday_text[0], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
         }
+
 
     }
 })
