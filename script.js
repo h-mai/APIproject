@@ -3,7 +3,8 @@ var placeId = [];
 var apiResults = [];
 
 // add the key here 
-var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
+
+ var Key = "";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");

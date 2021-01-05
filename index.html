@@ -5,15 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
-
+    <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
     <title>Melbourne Reboot</title>
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper deep-orange lighten-3">
-            <a href="#" class="brand-logo">Melbourne Reboot</a>
+
+            <a href="#" class="brand-logo"></a>
+            <img id="logo" src="assets\images\Melbourne Reboot Logo\melbourne reboot logo_resized.png">
+
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+
             <ul id="nav-mobile" class="right hide-on-med-and-down deep-orange lighten-3">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="aboutUs.html">About Us</a></li>
@@ -21,38 +27,43 @@
             </ul>
         </div>
     </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="aboutUs.html">About Us</a></li>
+        <li><a href="favourites.html">Favourites</a></li>
+    </ul>
 
     <header>
 
     </header>
-
     <div class="carousel carousel-slider">
-        <a class="carousel-item" href="#one!"><img src="assets\images\banner size\cafeImage.jpg">
+        <a class="carousel-item" href="#one!"><img src="assets\images\banner size\JPEG\resized banners\cafeImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Afta Putta Gunawan</h6>
             </div>
+
         </a>
-        <a class="carousel-item" href="#two!"><img src="assets\images\banner size\barImage.jpg">
+        <a class="carousel-item" href="#two!"><img src="assets\images\banner size\JPEG\resized banners\barImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Elevate</h6>
             </div>
         </a>
-        <a class="carousel-item" href="#three!"><img src="assets\images\banner size\skylineImage.jpg">
+        <a class="carousel-item" href="#three!"><img src="assets\images\banner size\JPEG\resized banners\skylineImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by James Wheeler</h6>
             </div>
         </a>
-        <a class="carousel-item" href="#four!"><img src="assets\images\banner size\beachImage.jpg">
+        <a class="carousel-item" href="#four!"><img src="assets\images\banner size\JPEG\resized banners\beachImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Rachel Claire</h6>
             </div>
         </a>
-        <a class="carousel-item" href="#five!"><img src="assets\images\banner size\streetartImage.jpg">
+        <a class="carousel-item" href="#five!"><img src="assets\images\banner size\JPEG\resized banners\streetartImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Shone Jai</h6>
             </div>
         </a>
-        <a class="carousel-item" href="#six!"><img src="assets\images\banner size\vintageImage.jpg">
+        <a class="carousel-item" href="#six!"><img src="assets\images\banner size\JPEG\resized banners\vintageImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Suzy Hazelwood</h6>
             </div>
@@ -68,18 +79,18 @@
         <div class="row">
             <form class="col s12">
                 <div class="row inputRow">
-                    <div id="suburbInput" class="input-field col l5">
+                    <div id="suburbInput" class="input-field col s12 m10 l5">
                         <label for="suburb">
                             <h6>Suburb</h6>
                         </label>
                         <input id="suburb" type="text" class="validate">
                     </div>
-                    <div>
+                    <div class="col s12 m10 l7" id="radius">
                         <form action="#" id="radiusTitle">
                             <label for="radius">
-                                <h6 class="center-align">Radius Kms</h6>
+                                <h6 class="left-align">Radius Kms</h6>
                             </label>
-                            <p class="col l5 range-field">
+                            <p class="col s12 m10 l7 range-field">
                                 <input type="range" id="test5" min="0" max="50" />
                             </p>
                         </form>
@@ -87,7 +98,7 @@
                 </div>
                 <div class="row">
                     <form id="checkBoxes" action="#">
-                        <div class="col m4">
+                        <div class="col s10 m4">
                             <p>
                                 <label>
 
@@ -104,7 +115,7 @@
                                     <span>Cafes</span>
                                 </label>
                             </p>
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="entertainment" />
@@ -113,7 +124,7 @@
                                 </label>
                             </p>
                         </div>
-                        <div class="col m4">
+                        <div class="col s10 m4">
                             <p>
                                 <label>
 
@@ -130,16 +141,16 @@
                                     <span>Park</span>
                                 </label>
                             </p>
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="casino" />
 
-                                    <span>Casino</span>
+                                    <span id="checkCol">Casino</span>
                                 </label>
                             </p>
                         </div>
-                        <div class="col m4">
+                        <div class="col s10 m4" id="column3">
                             <p>
                                 <label>
 
@@ -161,7 +172,7 @@
 
                                     <input type="checkbox" value="store" />
 
-                                    <span>Shopping</span>
+                                    <span id="checkCol">Shopping</span>
                                 </label>
                             </p>
                         </div>

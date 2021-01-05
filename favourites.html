@@ -5,7 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ 
+  <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
+
 
   <title>Melbourne Reboot</title>
 </head>
@@ -13,8 +18,10 @@
 <body>
   <nav>
     <div class="nav-wrapper deep-orange lighten-3">
-      <a href="#" class="brand-logo">Melbourne Reboot
-      </a>
+
+      <a href="#" class="brand-logo">Melbourne Reboot</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+
       <ul id="nav-mobile" class="right hide-on-med-and-down deep-orange lighten-3">
         <li><a href="index.html">Home</a></li>
         <li><a href="aboutUs.html">About Us</a></li>
@@ -22,6 +29,13 @@
       </ul>
     </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="aboutUs.html">About Us</a></li>
+    <li class="active"><a href="#">Favourites</a></li>
+  </ul>
+
   </head>
 
   <body>
