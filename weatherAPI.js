@@ -12,6 +12,7 @@ var apikey = "f6QbiHKwOvouxHGTPJ3GHffRRblmTZBG";
 var locationKey = "26216";
 
 var todaysForecast = {};
+var displayWeather = document.getElementById("todaysForecast");
 
 //fetching Accuweather Daily Weather Data
 async function fetchWeather () {
@@ -30,18 +31,20 @@ async function fetchWeather () {
     console.log(resp.DailyForecasts[0].Day.IconPhrase)
     console.log(resp.DailyForecasts[0].Day.Icon)
 
+
     // src = "assets/" + resp.DailyForecasts[0].Day.Icon + ".png"
-
-
-    todaysForecast = {
-        currentDate :  resp.DailyForecasts[0].Date,
-        minTemp : resp.DailyForecasts[0].Temperature.Minimum.Value,
-        maxTemp : resp.DailyForecasts[0].Temperature.Maximum.Value,
-        weatherText : resp.DailyForecasts[0].Day.IconPhrase,
-        weatherIcon : resp.DailyForecasts[0].Day.Icon, 
-    };
     
-    console.log(todaysForecast)
+    var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+    var minTemp = "Min " + Math.trunc(resp.DailyForecasts[0].Temperature.Minimum.Value) + " °";
+    var maxTemp = "Max " + Math.trunc(resp.DailyForecasts[0].Temperature.Maximum.Value) + " °";
+    var weatherText = resp.DailyForecasts[0].Day.IconPhrase;
+    var weatherIcon = document.createElement("img");
+    weatherIcon.src = "assets/images/weatherImages/" + resp.DailyForecasts[0].Day.Icon + ".png"
+
+    console.log(displayWeather)
+    displayWeather.textContent = currentDate + "  " + minTemp + "  " +maxTemp + "  " + weatherText;
+    displayWeather.appendChild(weatherIcon);
+
 }
     
 fetchWeather();
