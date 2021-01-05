@@ -121,6 +121,7 @@ function informationContainer(imageLink, title, operating , address , rate , lin
         for(var i=1; i<tempArray.length ;i++)
             hours = hours+" "+tempArray[i];
     }
+    var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fas fa-star"];
 
     var arrayInfo = [];
     arrayInfo.push(hours);
@@ -158,11 +159,15 @@ function informationContainer(imageLink, title, operating , address , rate , lin
 
     for(var i=0; i<categories.length; i++){
         var cardInfo = document.createElement("div");
-        cardInfo.appendChild(document.createTextNode(categories[i] +arrayInfo[i]));
+        var cardItag = document.createElement("i");
+        cardItag.className = ArrayOfClassName[i];
+        cardItag.appendChild(document.createTextNode(categories[i] +arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
+        cardInfo.appendChild(cardItag);
     }
 
     var linkDiv = document.createElement("a");
+    linkDiv.className = ArrayOfClassName[3];
     linkDiv.appendChild(document.createTextNode("directions"));
     linkDiv.setAttribute("href", arrayInfo[3]);
     linkDiv.setAttribute("target", "_blank");
