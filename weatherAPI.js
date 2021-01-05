@@ -6,7 +6,7 @@ var queryURL= "https://dataservice.accuweather.com/forecasts/v1/daily/1day/26216
 // var queryURL = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 
 //Accuweather API Key
-var apikey = "f6QbiHKwOvouxHGTPJ3GHffRRblmTZBG";
+var apikey = "";
 
 //Accuweather Location Key for Melbourne City 
 var locationKey = "26216";
