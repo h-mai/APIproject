@@ -4,12 +4,17 @@
     font-size: x-large;
     font-weight: 600;
 }
+
 #logo{
     height: 100%;
 }
 .carousel{
     max-height: 500px;
     margin-bottom: 20px;
+
+.carousel-item img{
+    max-height: 350px;
+
 }
 .credit{
     padding: 2px 10px;
@@ -19,16 +24,61 @@
 .inputRow{
     padding-left: 150px;
 }
-
-#radiusTitle{
-    margin-top: 20px;
-}
 #checkBoxes{
     margin-left: 180px;
 }
 .btn{
     align-items: center;
 }
+
 i.fas{
     color: #ff8a65;
 }
+
+#aboutUsCard{
+    max-width: 70%;
+}
+@media only screen and (max-width: 990px) {
+    .inputRow{
+        padding-left: 80px;
+    }
+    #checkBoxes{
+        margin-left: 80px;
+    }
+    #radius{
+        margin-left: 50px;
+    }
+    #aboutUsCard{
+        max-width: 90%;
+    }
+}
+@media only screen and (max-width: 595px) {
+    .inputRow{
+        padding-left: 50px;
+    }
+    #checkBoxes{
+        margin-left: 100px;
+    }
+    #radius{
+        margin-left: 0px;
+}
+#aboutUsCard{
+    max-width: 100%;
+}
+}
+@media only screen and (max-width: 420px) {
+    .inputRow{
+        padding-left: 0px;
+    }
+    #checkBoxes{
+        margin-left: 110px;
+    }
+    #checkCol{
+        margin-bottom: 0px;
+    }
+    #radius{
+        margin-left: 0px;
+}
+}
+
+
