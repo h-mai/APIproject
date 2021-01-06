@@ -115,38 +115,49 @@ submitBtn.addEventListener("click", function (e) {
             console.log(apiResults[i].photoUrl);
             console.log(apiResults[i].results.formatted_address);
             console.log(apiResults[i].results.name);
-            console.log(apiResults[i].results.opening_hours.weekday_text[0]);
+            console.log(apiResults[i].results.opening_hours.weekday_text);
             console.log(apiResults[i].results.rating);
             console.log(apiResults[i].results.url);
 
-            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, apiResults[i].results.opening_hours.weekday_text[0], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
+            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, apiResults[i].results.opening_hours.weekday_text, apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
         }
 
 
     }
 })
 
-
+// operating is array with the schedule of the place
 
 function informationContainer(imageLink, title, operating , address , rate , link , placeID){
     
     var today = moment().format('dddd')+":";
     var tempArray = operating.split(" ");
-    console.log(tempArray);
+    
     var hours = "";
 
-    if(today == tempArray[0]){
-        for(var i=1; i<tempArray.length ;i++)
-            hours = hours+" "+tempArray[i];
+    /* run the array with the opening hours and split each line to arrayline to find the today 
+    schedule for the place and to store to variable hours */
+
+    for(var j=0; j<operating.length; j++){
+        var tempArray = operating[j].split(" ");
+        if(today == tempArray[0]){
+            for(var i=1; i<tempArray.length ;i++)
+                hours = hours+" "+tempArray[i];
+        }
     }
+
+    // store all the class name to array and with the "for loop to insert to <i>"
     var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fa fa-star-o"];
 
+    // store all the information about the place/restaurant/cafe to array and with the "for loop to insert to <i>"
     var arrayInfo = [];
     arrayInfo.push(hours);
     arrayInfo.push(address);
     arrayInfo.push(rate);
     arrayInfo.push(link);
-    categories = ['', '', 'Rating : ',];
+    
+    categories = ['', ' ', ' Rating : ',];
+
     var firstRow = document.querySelector(".row");
 
     var divContainer = document.createElement("div");
