@@ -40,9 +40,14 @@
 #loginBtn{
     margin-bottom: 20px;
 }
+
+i.fas{
+    color: #ff8a65;
+}
 #clearBtn{
     margin-bottom: 20px;
     background-color: #f44336;
+
 }
 
 /* About Us page */
