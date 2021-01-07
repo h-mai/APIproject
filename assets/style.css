@@ -23,10 +23,20 @@
 }
 #saveBtn{
     margin-bottom: 20px;
+} 
+
 }
 #showRow{
+    align-items: center;
     margin-left: 10px;  
     margin-right: 10px;
+}
+
+#category{
+    margin-right: 10px;
+}
+#checkCol{
+    font-size:large;
 }
 
 /* Favourites page */

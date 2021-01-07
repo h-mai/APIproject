@@ -8,10 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
-
     <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
 
     <title>Melbourne Reboot</title>
@@ -106,19 +103,19 @@
                 <div class="row">
                     <form id="checkBoxes" action="#">
                         <div class="col s10 m4">
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="Art and Culture" />
-
+                                    <span><i class="fas fa-palette" id= category></i></span>
                                     <span>Art and Culture</span>
                                 </label>
                             </p>
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="cafe" />
-
+                                    <span><i class="fas fa-coffee" id= category></i></span>
                                     <span>Cafes</span>
                                 </label>
                             </p>
@@ -126,25 +123,25 @@
                                 <label>
 
                                     <input type="checkbox" value="entertainment" />
-
+                                    <span><i class="fas fa-icons" id= category></i></span>
                                     <span>Entertainment</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col s10 m4">
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="tourist_attraction" />
-
+                                    <span><i class="fas fa-archway" id= category></i></span>
                                     <span>Tourist Attractions</span>
                                 </label>
                             </p>
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="park" />
-
+                                    <span><i class="fas fa-campground" id= category></i></span>
                                     <span>Park</span>
                                 </label>
                             </p>
@@ -152,34 +149,34 @@
                                 <label>
 
                                     <input type="checkbox" value="casino" />
-
-                                    <span id="checkCol">Casino</span>
+                                    <span><i class="fas fa-dice" id= category></i></span>
+                                    <span>Casino</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col s10 m4" id="column3">
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="night_club" />
-
+                                    <span><i class="fas fa-record-vinyl" id= category></i></span>
                                     <span>Nightclub</span>
                                 </label>
                             </p>
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="restaurant" />
-
+                                    <span><i class="fas fa-utensils" id= category></i></span>
                                     <span>Restaurant</span>
                                 </label>
                             </p>
-                            <p>
+                            <p id="checkCol">
                                 <label>
 
                                     <input type="checkbox" value="store" />
-
-                                    <span id="checkCol">Shopping</span>
+                                    <span><i class="fas fa-shopping-bag" id= category></i></span>
+                                    <span>Shopping</span>
                                 </label>
                             </p>
                         </div>
@@ -189,18 +186,18 @@
                     </button>
                 </div>
     </section>
-    <article>
+    <article id="signUp">
         <div id="showRow" class="row">
             <form class="col s12 offset-m3">
                 <h6 class="center-align">Enter your login details to save favorite places then click the star icon</h6>
                 <div class="row">
-                    <div class="input-field col s12 l6">
+                    <div class="input-field col s6 l6" id="userInput">
                         <input id="user_name" type="text" class="validate">
                         <label for="user_name">User Name</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12 l6">
+                    <div class="input-field col s6 l6" id="userPassword">
                         <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
