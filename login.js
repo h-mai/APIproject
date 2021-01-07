@@ -6,6 +6,7 @@ loginBtn.addEventListener("click", function(e){
     var loginPassword = document.getElementById("loginPassword").value;
     console.log(loginName, loginPassword);
     checkLogin(loginName, loginPassword);
+    hideForm();
 })
 
 function checkLogin(user, password){
@@ -15,4 +16,8 @@ function checkLogin(user, password){
         console.log("show favourites");
     } else(alert("Login Error"));
     
+}
+
+function hideForm(){
+    document.getElementById("loginForm").classList.replace("row hide");
 }
