@@ -1,15 +1,17 @@
+// create Array data to store the favorites choices from the user
 var data = new Array(6);
 
 for (var i = 0; i < data.length; i++) {
   data[i] = [];
 }
 
+// check if there is any data in the localstorage from previous use
 
 var textQ = localStorage.getItem("saveMyPlaces");
 if(textQ !=null){
     data = JSON.parse(textQ);
 }
- console.log(data);
+
 
 for(var i=0; i<data[0].length; i++){
     informationContainer(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
@@ -46,9 +48,13 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     arrayInfo.push(rate);
     arrayInfo.push(link);
 
+    /* after the title there is four catgories follow in the card "openning hours" , "address" , " rating" because there is Loop for to add 
+    this categotiries to card some of them the don't have any text only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
 
     var firstRow = document.querySelector(".favorites");
+
+    // create the div will include the card
 
     var divContainer = document.createElement("div");
     divContainer.className = "col s12 m4 l2";
@@ -62,6 +68,8 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardImgDiv.className = "card-image";
     cardDiv.appendChild(cardImgDiv);
 
+    // create the <img> tag will include the image 
+
     var image = document.createElement("img");
     image.setAttribute("src", imageLink);
     image.setAttribute("onerror", "this.onerror=null;this.src='./5aykshsh-thumb.gif'");
@@ -71,16 +79,22 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardContentDiv.className = "card-content";
     cardDiv.appendChild(cardContentDiv);
 
+    // create the star will save in the local storage and will display to favorate-page
+
     var favorite = document.createElement("i");
     favorite.setAttribute("onclick", "toggleStar(event)");
     favorite.setAttribute("data-id", id);
     favorite.className = ArrayOfClassName[4];
     cardContentDiv.appendChild(favorite);
 
+    // create <h6> tag the title will be here
+
     var cardTitle = document.createElement("h6");
     cardTitle.className = "card-title";
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
+
+     // here is the Loop for create the "openning hours" , "address" , " rating" 
 
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
@@ -91,16 +105,17 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
         cardInfo.appendChild(cardItag);
     }
 
+    // last is the link for the direction for the place
+
     var linkDiv = document.createElement("a");
     linkDiv.className = ArrayOfClassName[3];
     linkDiv.appendChild(document.createTextNode("directions"));
     linkDiv.setAttribute("href", arrayInfo[3]);
     linkDiv.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
-
-
-
 }
+
+// this function change the status of the star and remove the information to local storage
 
 function toggleStar(event) {
 
