@@ -25,9 +25,8 @@
     margin-bottom: 20px;
 } 
 
-}
 #showRow{
-    align-items: center;
+    text-align-last: center;
     margin-left: 10px;  
     margin-right: 10px;
 }
