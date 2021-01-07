@@ -5,7 +5,7 @@ saveBtn.addEventListener("click", function(e){
     var userPassword = document.getElementById("password").value;
     localStorage.setItem("user", userName);
     localStorage.setItem("password", userPassword);
-    alert("saved");
+    alert("login details saved");
     document.getElementById("showRow").classList.add("hide");
     document.getElementById("saveBtn").classList.add("hide");
     

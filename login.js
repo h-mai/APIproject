@@ -7,7 +7,6 @@ loginBtn.addEventListener("click", function(e){
     console.log(loginName, loginPassword);
     checkLogin(loginName, loginPassword);
     hideForm();
-    document.getElementById("clearBtn").classList.replace("row hide");
 })
 
 function checkLogin(user, password){
@@ -20,4 +19,6 @@ function checkLogin(user, password){
 
 function hideForm(){
     document.getElementById("loginForm").classList.add("hide");
+    document.getElementById("loginBtn").classList.add("hide");
+    document.getElementById("clearBtn").classList.replace("row");
 }
