@@ -37,12 +37,12 @@
 #favLoginTitle{
     margin-top: 30px;
 }
-/* #loginAlign{
-    margin-left: 20px;
-    margin-bottom: 20px;
-} */
 #loginBtn{
     margin-bottom: 20px;
+}
+#clearBtn{
+    margin-bottom: 20px;
+    background-color: #f44336;
 }
 
 /* About Us page */
