@@ -189,7 +189,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardImgDiv.appendChild(image);
 
     var cardContentDiv = document.createElement("div");
-    cardContentDiv.className = "card-content";
+    cardContentDiv.className = "card-content black-text";
     cardDiv.appendChild(cardContentDiv);
 
     var favorite = document.createElement("i");
@@ -198,7 +198,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardContentDiv.appendChild(favorite);
 
     var cardTitle = document.createElement("h6");
-    cardTitle.className = "card-title";
+    cardTitle.className = "card-title black-text";
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
