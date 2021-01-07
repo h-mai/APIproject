@@ -5,7 +5,7 @@ var apiResults = [];
 // add the key here 
 
 
-var Key = "";
+var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -129,6 +129,8 @@ submitBtn.addEventListener("click", function (e) {
 
             informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, openingHours[i], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
         }
+
+        showForm();
     }
 });
 
@@ -215,15 +217,16 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     linkDiv.setAttribute("href", arrayInfo[3]);
     linkDiv.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
-
-
-
 }
 
 function toggleStar(event) {
     event.target.classList.toggle("fa-star");
 }
 
+function showForm(){
+    document.getElementById("showRow").classList.remove("hide");
+    document.getElementById("showBtn").classList.remove("hide");
+};
 
 
 
