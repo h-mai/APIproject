@@ -130,7 +130,7 @@ submitBtn.addEventListener("click", function (e) {
             informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, openingHours[i], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
         }
 
-        // showForm();
+        showForm();
     }
 });
 
@@ -223,10 +223,10 @@ function toggleStar(event) {
     event.target.classList.toggle("fa-star");
 }
 
-// function showForm(){
-//     document.getElementById("showRow").classList.remove("hide");
-//     document.getElementById("showBtn").classList.remove("hide");
-// };
+function showForm(){
+    document.getElementById("showRow").classList.remove("hide");
+    document.getElementById("showBtn").classList.remove("hide");
+};
 
 
 
