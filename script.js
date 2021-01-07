@@ -5,7 +5,7 @@ var apiResults = [];
 // add the key here 
 
 
- var Key = "";
+var Key = "";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -110,39 +110,48 @@ submitBtn.addEventListener("click", function (e) {
 
         console.log(apiResults);
 
-        for (var i=0; i<10; i++){
+        var openingHours = [];
 
-            console.log(apiResults[i].photoUrl);
-            console.log(apiResults[i].results.formatted_address);
-            console.log(apiResults[i].results.name);
-            console.log(apiResults[i].results.opening_hours.weekday_text);
-            console.log(apiResults[i].results.rating);
-            console.log(apiResults[i].results.url);
+        for (var i = 0; i < 10; i++) {
+            var hours = "not available";
+            if (apiResults[i].results.opening_hours) {
+                var hours = apiResults[i].results.opening_hours.weekday_text
+            }
+            openingHours.push(hours)
 
-            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, apiResults[i].results.opening_hours.weekday_text, apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
+            console.log(
+                apiResults[i].photoUrl,
+                apiResults[i].results.formatted_address,
+                apiResults[i].results.name,
+                openingHours[i],
+                apiResults[i].results.rating, apiResults[i].results.url
+            );
+
+            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, openingHours[i], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
         }
-
-
     }
-})
+});
+
 
 // operating is array with the schedule of the place
 
-function informationContainer(imageLink, title, operating , address , rate , link , placeID){
-    
-    var today = moment().format('dddd')+":";
-    var tempArray = operating.split(" ");
-    
+function informationContainer(imageLink, title, operating, address, rate, link, placeID) {
+
+    var today = moment().format('dddd') + ":";
+    var tempArray = "";
+
     var hours = "";
 
     /* run the array with the opening hours and split each line to arrayline to find the today 
     schedule for the place and to store to variable hours */
 
-    for(var j=0; j<operating.length; j++){
-        var tempArray = operating[j].split(" ");
-        if(today == tempArray[0]){
-            for(var i=1; i<tempArray.length ;i++)
-                hours = hours+" "+tempArray[i];
+    for (var j = 0; j < operating.length; j++) {
+        if (operating[j]) {
+            var tempArray = operating[j].split(" ");
+            if (today == tempArray[0]) {
+                for (var i = 1; i < tempArray.length; i++)
+                    hours = hours + " " + tempArray[i];
+            }
         }
     }
 
@@ -155,21 +164,21 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     arrayInfo.push(address);
     arrayInfo.push(rate);
     arrayInfo.push(link);
-    
+
     categories = ['', ' ', ' Rating : ',];
 
     var firstRow = document.querySelector(".row");
 
     var divContainer = document.createElement("div");
-    divContainer.className="col s12 m4 l2";
+    divContainer.className = "col s12 m4 l2";
     firstRow.appendChild(divContainer);
-    
+
     var cardDiv = document.createElement("div");
-    cardDiv.className="card";
+    cardDiv.className = "card";
     divContainer.appendChild(cardDiv);
 
     var cardImgDiv = document.createElement("div");
-    cardImgDiv.className="card-image";
+    cardImgDiv.className = "card-image";
     cardDiv.appendChild(cardImgDiv);
 
     var image = document.createElement("img");
@@ -178,7 +187,7 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     cardImgDiv.appendChild(image);
 
     var cardContentDiv = document.createElement("div");
-    cardContentDiv.className="card-content";
+    cardContentDiv.className = "card-content";
     cardDiv.appendChild(cardContentDiv);
 
     var favorite = document.createElement("i");
@@ -191,11 +200,11 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
-    for(var i=0; i<categories.length; i++){
+    for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
         var cardItag = document.createElement("i");
         cardItag.className = ArrayOfClassName[i];
-        cardItag.appendChild(document.createTextNode(categories[i] +arrayInfo[i]));
+        cardItag.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
         cardInfo.appendChild(cardItag);
     }
@@ -207,12 +216,12 @@ function informationContainer(imageLink, title, operating , address , rate , lin
     linkDiv.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
 
-    
-    
+
+
 }
 
 function toggleStar(event) {
-   event.target.classList.toggle("fa-star");
+    event.target.classList.toggle("fa-star");
 }
 
 

@@ -1,7 +1,7 @@
 
 //Daily Weather Forecast
 
-var queryURL= "https://dataservice.accuweather.com/forecasts/v1/daily/1day/26216?apikey=""&language=en-us&details=false&metric=true"
+var queryURL= "https://dataservice.accuweather.com/forecasts/v1/daily/1day/26216?apikey=&language=en-us&details=false&metric=true"
 
 // var queryURL = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 
@@ -39,7 +39,7 @@ async function fetchWeather () {
     var maxTemp = "Max " + Math.trunc(resp.DailyForecasts[0].Temperature.Maximum.Value) + " °";
     var weatherText = resp.DailyForecasts[0].Day.IconPhrase;
     var weatherIcon = document.createElement("img");
-    weatherIcon.src = "assets/images/weatherImages/" + resp.DailyForecasts[0].Day.Icon + ".png"
+    weatherIcon.src = "assets/images/weatherImages/" + resp.DailyForecasts[0].Day.Icon + ".png";
 
     console.log(displayWeather)
     displayWeather.textContent = currentDate + "  " + minTemp + "  " +maxTemp + "  " + weatherText;
