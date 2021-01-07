@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
   <title>Melbourne Reboot</title>
 </head>
 
@@ -32,26 +34,29 @@
     </nav>
   </header>
 
-  <div class="row">
-    <form class="col s12 m7 offset-m3" id="favForm">
-      <h6 id="favLoginTitle">Enter your User Name and Password</h6>
-      <div class="row">
-        <div class="input-field col s10 l6">
+  <section>
+    <div id="loginForm" class="row">
+      <h6 class="center-align" id="favLoginTitle">Enter your User Name and Password</h6>
+      <div class="col m2 l4"></div>
+      <div class="col s12 m8 l4">
+        <form id="favForm">
           <input id="login_name" type="text" class="validate">
           <label for="login_name">User Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10 l6">
           <input id="loginPassword" type="password" class="validate">
           <label for="loginPassword">Password</label>
-        </div>
+        </form>
       </div>
-    </form>
-  </div>
-  <div class="center-align">
-    <button class="btn waves-effect waves-light" id="loginBtn" type="submit" name="action">Login</button>
-  </div>
+      <div class="col m2 l4"></div>
+    </div>
+    <div class="center-align">
+      <button class="btn waves-effect waves-light" id="loginBtn" type="submit" name="action">Login</button>
+    </div>
+  </section>
+    
+    <div class="center-align">
+      <button class="btn waves-effect waves-light hide" id="clearBtn" type="submit" name="action">Clear Favourites</button>
+    </div>
+
   <div class="row hide">
     <div class="col s12 m4 l2">
       <div class="card">
@@ -71,11 +76,11 @@
   </div>
 
   <footer>
-    <footer class="page-footer deep-orange lighten-3">
+    <footer class="page-footer deep-orange lighten-3 center-align">
       <div class="container">
         <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Weather Date Temp Icon</h5>
+          <div class="col l12">
+            <h5 class="white-text" id="todaysForecast"></h5>
           </div>
         </div>
       </div>
@@ -93,6 +98,8 @@
   <script src="login.js"></script>
   <script src="script.js"></script>
   <script src="assets/carousel.js"></script>
+  <script src="weatherAPI.js"></script>
+
 </body>
 
 </html>

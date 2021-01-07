@@ -1,16 +1,12 @@
 
 //Daily Weather Forecast
 
-var queryURL= "https://dataservice.accuweather.com/forecasts/v1/daily/1day/26216?apikey=f6QbiHKwOvouxHGTPJ3GHffRRblmTZBG&language=en-us&details=false&metric=true"
-
-// var queryURL = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
-
-//Accuweather API Key
-var apikey = "";
-
-//Accuweather Location Key for Melbourne City 
+//Accuweather API Key and Location key for Melbourne City
 var locationKey = "26216";
+var apikey = "f6QbiHKwOvouxHGTPJ3GHffRRblmTZBG";
+var queryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 
+//DOM for storing weather data
 var todaysForecast = {};
 var displayWeather = document.getElementById("todaysForecast");
 
@@ -39,7 +35,7 @@ async function fetchWeather () {
     var maxTemp = "Max " + Math.trunc(resp.DailyForecasts[0].Temperature.Maximum.Value) + " °";
     var weatherText = resp.DailyForecasts[0].Day.IconPhrase;
     var weatherIcon = document.createElement("img");
-    weatherIcon.src = "assets/images/weatherImages/" + resp.DailyForecasts[0].Day.Icon + ".png"
+    weatherIcon.src = "assets/images/weatherImages/" + resp.DailyForecasts[0].Day.Icon + ".png";
 
     console.log(displayWeather)
     displayWeather.textContent = currentDate + "  " + minTemp + "  " +maxTemp + "  " + weatherText;

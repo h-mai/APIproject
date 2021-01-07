@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
     <title>Melbourne Reboot</title>
 </head>
 
@@ -65,11 +67,11 @@
         </section>
 
         <footer>
-            <footer class="page-footer deep-orange lighten-3">
+            <footer class="page-footer deep-orange lighten-3 center-align">
                 <div class="container">
                     <div class="row">
-                        <div class="col l6 s12">
-                            <h5 class="white-text">Weather Date Temp Icon</h5>
+                        <div class="col l12 s12">
+                            <h5 class="white-text" id="todaysForecast"></h5>
                         </div>
                     </div>
                 </div>
@@ -85,7 +87,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="assets/carousel.js"></script>
-
+        <script src="weatherAPI.js"></script>
     </body>
 
 </html>
