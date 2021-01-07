@@ -1,19 +1,12 @@
 
 //Daily Weather Forecast
 
-// var queryURL= "https://dataservice.accuweather.com/forecasts/v1/daily/1day/26216?apikey=f6QbiHKwOvouxHGTPJ3GHffRRblmTZBG&language=en-us&details=false&metric=true"
-
-// var queryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
-
-//Accuweather API Key
+//Accuweather API Key and Location key for Melbourne City
 var locationKey = "26216";
-var apikey = "f6QbiHKwOvouxHGTPJ3GHffRRblmTZBG";
+var apikey = " ";
 var queryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 
-
-//Accuweather Location Key for Melbourne City 
-// var locationKey = "26216";
-
+//DOM for storing weather data
 var todaysForecast = {};
 var displayWeather = document.getElementById("todaysForecast");
 
