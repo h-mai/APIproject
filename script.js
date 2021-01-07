@@ -204,6 +204,10 @@ function toggleStar(event) {
    event.target.classList.toggle("fa-star");
 }
 
+function showForm{
+    var loginForm = document.getElementById("showRow").removeAttribute("hide");
+    var LoginButton = document.getElementById("showBtn").removeAttribute("hide");
+}
 
 
 
