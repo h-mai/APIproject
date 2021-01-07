@@ -7,17 +7,17 @@ loginBtn.addEventListener("click", function(e){
     console.log(loginName, loginPassword);
     checkLogin(loginName, loginPassword);
     hideForm();
+    document.getElementById("clearBtn").classList.replace("row hide");
 })
 
 function checkLogin(user, password){
     var storedUser = localStorage.getItem("user");
     var storedPassword = localStorage.getItem("password");
     if(storedUser === user && storedPassword === password) {
-        console.log("show favourites");
     } else(alert("Login Error"));
     
 }
 
 function hideForm(){
-    document.getElementById("loginForm").classList.replace("row hide");
+    document.getElementById("loginForm").classList.add("hide");
 }
