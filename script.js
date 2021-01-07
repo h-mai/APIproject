@@ -2,12 +2,10 @@
 var placeId = [];
 var apiResults = [];
 
-// add the key here 
+// Add the key here 
+var Key = "";
 
-
-var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
-
-//Select homepage submit button
+// Select homepage submit button
 var submitBtn = document.querySelector("button");
 
 // Add click to homepage submit button
@@ -121,7 +119,7 @@ submitBtn.addEventListener("click", function (e) {
 
             console.log(
                 apiResults[i].photoUrl,
-                apiResults[i].results.formatted_address.replace(/VIC|Australia|,/g, ""),
+                apiResults[i].results.formatted_address.replace(/VIC|, Australia/g, ""),
                 apiResults[i].results.name,
                 openingHours[i],
                 apiResults[i].results.rating, apiResults[i].results.url
@@ -132,7 +130,7 @@ submitBtn.addEventListener("click", function (e) {
                 apiResults[i].photoUrl, 
                 apiResults[i].results.name, 
                 openingHours[i], 
-                apiResults[i].results.formatted_address.replace(/VIC|Australia|,/g, ""),
+                apiResults[i].results.formatted_address.replace(/VIC|, Australia|/g, ""),
                 apiResults[i].results.rating, 
                 apiResults[i].results.url)
         }
@@ -148,12 +146,6 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     var tempArray = "";
 
     var hours = "";
-
-    // var firstRow = document.querySelector("section");
-    // var divContainer = document.createElement("div");
-    // divContainer.className = "row";
-    // firstRow.appendChild(divContainer);
-
 
     /* run the array with the opening hours and split each line to arrayline to find the today 
     schedule for the place and to store to variable hours */
@@ -213,6 +205,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
+    // Add place details and icons to card 
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
         cardInfo.className = "placeDetails";
@@ -225,6 +218,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
         cardInfo.prepend(cardItag);
     }
 
+    // Display Google Maps link
     var linkDiv = document.createElement("div");
     linkDiv.className = "card-action";
     var mapsLink = document.createElement("a");
