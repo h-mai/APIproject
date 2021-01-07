@@ -1,11 +1,11 @@
 // Create variable to store each place details
 var placeId = [];
 var apiResults = [];
-
+var openingHours = [];
 // add the key here 
 
 
-var Key = "";
+var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -65,7 +65,7 @@ submitBtn.addEventListener("click", function (e) {
         console.log(response);
 
         for (var i = 0; i < 10; i++)
-            placeId.push(response.results[i].place_id)
+            placeId.push(response.results[i].place_id);
         fetchData();
 
     }
@@ -110,7 +110,7 @@ submitBtn.addEventListener("click", function (e) {
 
         console.log(apiResults);
 
-        var openingHours = [];
+        //var openingHours = [];
 
         for (var i = 0; i < 10; i++) {
             var hours = "not available";
@@ -119,23 +119,37 @@ submitBtn.addEventListener("click", function (e) {
             }
             openingHours.push(hours)
 
-            console.log(
+            /*console.log(
                 apiResults[i].photoUrl,
                 apiResults[i].results.formatted_address,
                 apiResults[i].results.name,
                 openingHours[i],
                 apiResults[i].results.rating, apiResults[i].results.url
-            );
+            );*/
 
-            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, openingHours[i], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
+            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, openingHours[i], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url,i);
         }
     }
 });
 
+// create Array data to store the favorites choices from the user
+
+var data = new Array(6);
+
+for (var i = 0; i < data.length; i++) {
+  data[i] = [];
+}
+
+// check if there is any data in the localstorage from previous use
+
+var textQ = localStorage.getItem("saveMyPlaces");
+if(textQ !=null){
+    data = JSON.parse(textQ);
+}
 
 // operating is array with the schedule of the place
 
-function informationContainer(imageLink, title, operating, address, rate, link, placeID) {
+function informationContainer(imageLink, title, operating, address, rate, link, id) {
 
     var today = moment().format('dddd') + ":";
     var tempArray = "";
@@ -156,7 +170,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     }
 
     // store all the class name to array and with the "for loop to insert to <i>"
-    var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fa fa-star-o"];
+    var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fa fa-star fa-star-o"];
 
     // store all the information about the place/restaurant/cafe to array and with the "for loop to insert to <i>"
     var arrayInfo = [];
@@ -165,9 +179,13 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     arrayInfo.push(rate);
     arrayInfo.push(link);
 
+    /* after the title there is four catgories follow in the card "openning hours" , "address" , " rating" because there is Loop for to add 
+    this categotiries to card some of them the don't have any text only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
 
     var firstRow = document.querySelector(".row");
+
+    // create the div will include the card
 
     var divContainer = document.createElement("div");
     divContainer.className = "col s12 m4 l2";
@@ -181,6 +199,8 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardImgDiv.className = "card-image";
     cardDiv.appendChild(cardImgDiv);
 
+    // create the <img> tag will include the image 
+
     var image = document.createElement("img");
     image.setAttribute("src", imageLink);
     image.setAttribute("onerror", "this.onerror=null;this.src='./5aykshsh-thumb.gif'");
@@ -190,15 +210,22 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardContentDiv.className = "card-content";
     cardDiv.appendChild(cardContentDiv);
 
+    // create the star will save in the local storage and will display to favorate-page
+
     var favorite = document.createElement("i");
     favorite.setAttribute("onclick", "toggleStar(event)");
+    favorite.setAttribute("data-id", id)
     favorite.className = ArrayOfClassName[4];
     cardContentDiv.appendChild(favorite);
+
+    // create <h6> tag the title will be here
 
     var cardTitle = document.createElement("h6");
     cardTitle.className = "card-title";
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
+
+    // here is the Loop for create the "openning hours" , "address" , " rating" 
 
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
@@ -208,6 +235,8 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
         cardContentDiv.appendChild(cardInfo);
         cardInfo.appendChild(cardItag);
     }
+
+    // last is the link for the direction for the place
 
     var linkDiv = document.createElement("a");
     linkDiv.className = ArrayOfClassName[3];
@@ -219,9 +248,23 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
 
 }
+// this function change the status of the star and save the information to local storage
 
 function toggleStar(event) {
-    event.target.classList.toggle("fa-star");
+
+    event.target.classList.toggle("fa-star-o");
+    
+    var id = event.target.dataset.id;
+
+    data[0].push(apiResults[id].photoUrl);
+    data[1].push(apiResults[id].results.name);
+    data[2].push(openingHours[id]);
+    data[3].push(apiResults[id].results.formatted_address);
+    data[4].push(apiResults[id].results.rating);
+    data[5].push(apiResults[id].results.url);
+  
+   localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+
 }
 
 

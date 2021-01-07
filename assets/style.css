@@ -66,9 +66,9 @@ a{
 .fa{
     float: right;
 }
-.fa-star{
+/*.fa-star{
     color: gold;
-}
+}*/
 
 /* Media Queries */
 @media only screen and (max-width: 1200px) {
