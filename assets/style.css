@@ -21,6 +21,9 @@
 #checkBoxes{
     margin-left: 180px;
 }
+#submitBtn{
+    margin-bottom: 40px;
+}
 #saveBtn{
     margin-bottom: 20px;
 }
@@ -34,18 +37,12 @@
 #favLoginTitle{
     margin-top: 30px;
 }
-#loginAlign{
+/* #loginAlign{
     margin-left: 20px;
     margin-bottom: 20px;
-}
-#favForm{
-    margin-left: 500px;
-}
+} */
 #loginBtn{
     margin-bottom: 20px;
-}
-i.fa{
-    color: #ff8a65;
 }
 
 /* About Us page */
@@ -55,6 +52,9 @@ i.fa{
 }
 
 /* Style for the cards-places */
+i.fas{
+    color: #ff8a65;
+}
 
 .card-image img{
     width: 100%;
@@ -71,10 +71,6 @@ a{
 }
 
 /* Media Queries */
-@media only screen and (max-width: 1200px) {
-    #favForm{
-        margin-left: 400px;
-}
 @media only screen and (max-width: 990px) {
     .inputRow{
         padding-left: 80px;
@@ -88,14 +84,6 @@ a{
     #aboutUsCard{
         max-width: 90%;
     }   
-    #favForm{
-        margin-left: 175px;
-    }
-}
-@media only screen and (max-width: 680px) {
-    #favForm{
-        margin-left: 50px;
-    }
 }
 @media only screen and (max-width: 595px) {
     .inputRow{
@@ -109,9 +97,6 @@ a{
     }
     #aboutUsCard{
         max-width: 100%;
-    }
-    #favForm{
-        margin-left: 10px;
     }
 }
 @media only screen and (max-width: 420px) {

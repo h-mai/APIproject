@@ -35,22 +35,19 @@
   </header>
 
   <div class="row">
-    <form class="col s12 m7 offset-m3" id="favForm">
-      <h6 id="favLoginTitle">Enter your User Name and Password</h6>
-      <div class="row">
-        <div class="input-field col s10 l6">
-          <input id="login_name" type="text" class="validate">
-          <label for="login_name">User Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10 l6">
-          <input id="loginPassword" type="password" class="validate">
-          <label for="loginPassword">Password</label>
-        </div>
-      </div>
-    </form>
+    <h6 class="center-align" id="favLoginTitle">Enter your User Name and Password</h6>
+    <div class="col m2 l3"></div>
+    <div class="col s12 m8 l6">
+      <form id="favForm">
+        <input id="login_name" type="text" class="validate">
+        <label for="login_name">User Name</label>
+        <input id="loginPassword" type="password" class="validate">
+        <label for="loginPassword">Password</label>
+      </form>
+    </div>
+    <div class="col m2 l3"></div>
   </div>
+
   <div class="center-align">
     <button class="btn waves-effect waves-light" id="loginBtn" type="submit" name="action">Login</button>
   </div>
