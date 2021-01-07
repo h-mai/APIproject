@@ -34,23 +34,29 @@
     </nav>
   </header>
 
-  <div class="row">
-    <h6 class="center-align" id="favLoginTitle">Enter your User Name and Password</h6>
-    <div class="col m2 l4"></div>
-    <div class="col s12 m8 l4">
-      <form id="favForm">
-        <input id="login_name" type="text" class="validate">
-        <label for="login_name">User Name</label>
-        <input id="loginPassword" type="password" class="validate">
-        <label for="loginPassword">Password</label>
-      </form>
+  <section>
+    <div class="row">
+      <h6 class="center-align" id="favLoginTitle">Enter your User Name and Password</h6>
+      <div class="col m2 l4"></div>
+      <div class="col s12 m8 l4">
+        <form id="favForm">
+          <input id="login_name" type="text" class="validate">
+          <label for="login_name">User Name</label>
+          <input id="loginPassword" type="password" class="validate">
+          <label for="loginPassword">Password</label>
+        </form>
+      </div>
+      <div class="col m2 l4"></div>
     </div>
-    <div class="col m2 l4"></div>
-  </div>
+    <div class="center-align">
+      <button class="btn waves-effect waves-light" id="loginBtn" type="submit" name="action">Login</button>
+    </div>
+  </section>
+    
+    <div class="center-align">
+      <button class="btn waves-effect waves-light" id="clearBtn" type="submit" name="action">Clear Favourites</button>
+    </div>
 
-  <div class="center-align">
-    <button class="btn waves-effect waves-light" id="loginBtn" type="submit" name="action">Login</button>
-  </div>
   <div class="row hide">
     <div class="col s12 m4 l2">
       <div class="card">

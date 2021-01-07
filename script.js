@@ -228,6 +228,16 @@ function showForm(){
     document.getElementById("showBtn").classList.remove("hide");
 };
 
+//Clears all favourites 
+var clearBtn = document.getElementById("clearBtn");
+
+clearBtn.addEventListener("click", function (e) {
+    clearFavourites();
+});
+function clearFavourites(){
+
+}
+
 
 
 
