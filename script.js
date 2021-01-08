@@ -5,7 +5,7 @@ var openingHours = [];
 // add the key here 
 
 
-var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
+var Key = "";
 
 //Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -147,7 +147,7 @@ if(textQ !=null){
     data = JSON.parse(textQ);
 }
 
-// operating is array with the schedule of the place
+
 
 function informationContainer(imageLink, title, operating, address, rate, link, id) {
 
@@ -203,7 +203,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
     var image = document.createElement("img");
     image.setAttribute("src", imageLink);
-    image.setAttribute("onerror", "this.onerror=null;this.src='./5aykshsh-thumb.gif'");
+    image.setAttribute("onerror", "this.onerror=null;this.src='./assets/images/Melbourne Reboot Logo/melbourne reboot logo_resized.png'");
     cardImgDiv.appendChild(image);
 
     var cardContentDiv = document.createElement("div");
@@ -214,7 +214,8 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
     var favorite = document.createElement("i");
     favorite.setAttribute("onclick", "toggleStar(event)");
-    favorite.setAttribute("data-id", id)
+    favorite.setAttribute("data-id", id);
+    favorite.setAttribute("data-save","not-saved");
     favorite.className = ArrayOfClassName[4];
     cardContentDiv.appendChild(favorite);
 
@@ -252,18 +253,34 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
 function toggleStar(event) {
 
-    event.target.classList.toggle("fa-star-o");
-    
-    var id = event.target.dataset.id;
+    var saveInfo = event.target.getAttribute("data-save");
 
-    data[0].push(apiResults[id].photoUrl);
-    data[1].push(apiResults[id].results.name);
-    data[2].push(openingHours[id]);
-    data[3].push(apiResults[id].results.formatted_address);
-    data[4].push(apiResults[id].results.rating);
-    data[5].push(apiResults[id].results.url);
-  
-   localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+    console.log(saveInfo);
+    
+    if(saveInfo == "not-saved"){
+
+        event.target.classList.toggle("fa-star-o");
+        event.target.setAttribute("data-save","saved");
+        
+        var id = event.target.dataset.id;
+
+        data[0].push(apiResults[id].photoUrl);
+        data[1].push(apiResults[id].results.name);
+        data[2].push(openingHours[id]);
+        data[3].push(apiResults[id].results.formatted_address);
+        data[4].push(apiResults[id].results.rating);
+        data[5].push(apiResults[id].results.url);
+        localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+    }
+    else{
+
+        event.target.setAttribute("data-save","not-saved");
+        for(var i=0; i<6; i++){
+            data[i].splice(id,1);
+        }
+        
+        localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+    }
 
 }
 

@@ -72,7 +72,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
     var image = document.createElement("img");
     image.setAttribute("src", imageLink);
-    image.setAttribute("onerror", "this.onerror=null;this.src='./5aykshsh-thumb.gif'");
+    image.setAttribute("onerror", "this.onerror=null;this.src='./assets/images/MelbourneRebootLogo/melbourne reboot logo_resized.png'");
     cardImgDiv.appendChild(image);
 
     var cardContentDiv = document.createElement("div");
@@ -128,4 +128,6 @@ function toggleStar(event) {
     }
     
     localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+
+    window.location.reload();
 }
