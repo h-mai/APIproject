@@ -23,7 +23,8 @@
             <div class="nav-wrapper deep-orange lighten-3">
                 <a href="#" class="brand-logo"></a>
                 <img id="logo" src="assets\images\Melbourne Reboot Logo\melbourne reboot logo_resized.png">
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i
+                        class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down deep-orange lighten-3">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="aboutUs.html">About Us</a></li>
@@ -97,7 +98,7 @@
                             <label for="radius">
                                 <h6 class="left-align">Radius Kms</h6>
                             </label>
-                            <p class="col s12 m10 l7 range-field">
+                            <p class="col s12 m10 l9 range-field">
                                 <input type="range" id="test5" min="0" max="50" />
                             </p>
                         </form>
@@ -189,31 +190,39 @@
                     </button>
                 </div>
     </section>
+    <section>
+        <div class="results-row row"></div>
+    </section>
     <article>
-        <div id="showRow" class="row">
-            <form class="col s12 offset-m3">
-                <h6 class="center-align">Enter your login details to save favorite places then click the star icon</h6>
-                <div class="row">
-                    <div class="input-field col s12 l6">
-                        <input id="user_name" type="text" class="validate">
-                        <label for="user_name">User Name</label>
+        <div id="showRow" class="row hide">
+
+            <div class="col m1 l4"></div>
+            <div class="col m10 l4">
+                <form>
+                    <h6 class="center-align">Enter your login details to save favorite places then click the star icon
+                    </h6>
+                    <div class="row">
+                        <div class="input-field">
+                            <input id="user_name" type="text" class="validate">
+                            <label for="user_name">User Name</label>
+                        </div>
+
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 l6">
+                    <div class="input-field">
                         <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="col m1 l4"></div>
         </div>
-        <div class="center-align">
+        <div id="showBtn" class="center-align hide">
             <button class="btn waves-effect waves-light" id="saveBtn" type="submit" name="action">Save</button>
         </div>
     </article>
 
     <footer>
-        <footer class="page-footer deep-orange lighten-3">
+        <footer class="page-footer deep-orange lighten-3 center-align">
             <div class="container">
                 <div class="row">
 

@@ -3,7 +3,9 @@
 
 //Accuweather API Key and Location key for Melbourne City
 var locationKey = "26216";
+
 var apikey = "";
+
 var queryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 
 //DOM for storing weather data
@@ -27,8 +29,6 @@ async function fetchWeather () {
     console.log(resp.DailyForecasts[0].Day.IconPhrase)
     console.log(resp.DailyForecasts[0].Day.Icon)
 
-
-    // src = "assets/" + resp.DailyForecasts[0].Day.Icon + ".png"
     
     var currentDate = moment().format('MMMM Do YYYY');
     var minTemp = "Min " + Math.trunc(resp.DailyForecasts[0].Temperature.Minimum.Value) + " °";

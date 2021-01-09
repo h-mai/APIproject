@@ -1,13 +1,16 @@
 // Create variable to store each place details
 var placeId = [];
 var apiResults = [];
+
 var openingHours = [];
 // add the key here 
 
 
+
+
 var Key = "";
 
-//Select homepage submit button
+// Select homepage submit button
 var submitBtn = document.querySelector("button");
 
 // Add click to homepage submit button
@@ -121,14 +124,25 @@ submitBtn.addEventListener("click", function (e) {
 
             /*console.log(
                 apiResults[i].photoUrl,
-                apiResults[i].results.formatted_address,
+                apiResults[i].results.formatted_address.replace(/VIC|, Australia/g, ""),
                 apiResults[i].results.name,
                 openingHours[i],
                 apiResults[i].results.rating, apiResults[i].results.url
             );*/
 
-            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, openingHours[i], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url,i);
+
+
+            informationContainer(
+                apiResults[i].photoUrl, 
+                apiResults[i].results.name, 
+                openingHours[i], 
+                apiResults[i].results.formatted_address.replace(/VIC|, Australia|/g, ""),
+                apiResults[i].results.rating, 
+                apiResults[i].results.url)
+
         }
+
+        showForm();
     }
 });
 
@@ -183,17 +197,18 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     this categotiries to card some of them the don't have any text only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
 
-    var firstRow = document.querySelector(".row");
+    var firstRow = document.querySelector(".results-row");
+
 
     // create the div will include the card
 
-    var divContainer = document.createElement("div");
-    divContainer.className = "col s12 m4 l2";
-    firstRow.appendChild(divContainer);
+    var cardContainer = document.createElement("div");
+    cardContainer.className = "col s12 m6 l4 xl2";
+    firstRow.appendChild(cardContainer);
 
     var cardDiv = document.createElement("div");
     cardDiv.className = "card";
-    divContainer.appendChild(cardDiv);
+    cardContainer.appendChild(cardDiv);
 
     var cardImgDiv = document.createElement("div");
     cardImgDiv.className = "card-image";
@@ -207,7 +222,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardImgDiv.appendChild(image);
 
     var cardContentDiv = document.createElement("div");
-    cardContentDiv.className = "card-content";
+    cardContentDiv.className = "card-content black-text";
     cardDiv.appendChild(cardContentDiv);
 
     // create the star will save in the local storage and will display to favorate-page
@@ -222,32 +237,40 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     // create <h6> tag the title will be here
 
     var cardTitle = document.createElement("h6");
-    cardTitle.className = "card-title";
+    cardTitle.className = "card-title black-text";
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
-    // here is the Loop for create the "openning hours" , "address" , " rating" 
 
+    // here is the Loop for create the "openning hours" , "address" , " rating" 
+    // Add place details and icons to card 
+  
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
+        cardInfo.className = "placeDetails";
+        var info = document.createElement("span");
         var cardItag = document.createElement("i");
         cardItag.className = ArrayOfClassName[i];
-        cardItag.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
+        info.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
-        cardInfo.appendChild(cardItag);
+        cardInfo.appendChild(info);
+        cardInfo.prepend(cardItag);
     }
 
-    // last is the link for the direction for the place
 
-    var linkDiv = document.createElement("a");
-    linkDiv.className = ArrayOfClassName[3];
-    linkDiv.appendChild(document.createTextNode("directions"));
-    linkDiv.setAttribute("href", arrayInfo[3]);
-    linkDiv.setAttribute("target", "_blank");
+    // Display Google Maps link
+    var linkDiv = document.createElement("div");
+    linkDiv.className = "card-action";
+    var mapsLink = document.createElement("a");
+    var mapsIcon = document.createElement("i")
+    mapsIcon.className = ArrayOfClassName[3];
+    mapsLink.appendChild(document.createTextNode("  directions"));
+    mapsLink.setAttribute("href", arrayInfo[3]);
+    mapsLink.setAttribute("target", "_blank");
+
     cardContentDiv.appendChild(linkDiv);
-
-
-
+    linkDiv.appendChild(mapsLink);
+    mapsLink.prepend(mapsIcon);
 }
 // this function change the status of the star and save the information to local storage
 
@@ -284,6 +307,20 @@ function toggleStar(event) {
 
 }
 
+function showForm(){
+    document.getElementById("showRow").classList.remove("hide");
+    document.getElementById("showBtn").classList.remove("hide");
+};
+
+//Clears all favourites 
+var clearBtn = document.getElementById("clearBtn");
+
+clearBtn.addEventListener("click", function (e) {
+    clearFavourites();
+});
+function clearFavourites(){
+
+}
 
 
 
