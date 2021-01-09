@@ -29,8 +29,6 @@ async function fetchWeather () {
     console.log(resp.DailyForecasts[0].Day.IconPhrase)
     console.log(resp.DailyForecasts[0].Day.Icon)
 
-
-    // src = "assets/" + resp.DailyForecasts[0].Day.Icon + ".png"
     
     var currentDate = moment().format('MMMM Do YYYY');
     var minTemp = "Min " + Math.trunc(resp.DailyForecasts[0].Temperature.Minimum.Value) + " °";
