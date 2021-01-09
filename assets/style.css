@@ -15,6 +15,10 @@
     background-color: rgba(128, 128, 128, 0.753) ;
     display: inline;
 }
+#mainP{
+    padding-left: 50px;
+    padding-right: 50px;
+}
 .inputRow{
     padding-left: 150px;
 }
@@ -108,9 +112,9 @@ i.fas{
 .fa{
     float: right;
 }
-/*.fa-star{
+.fa-star{
     color: gold;
-}*/
+}
 
 /* Media Queries */
 
@@ -167,6 +171,10 @@ i.fas{
     }
     #radius{
         margin-left: 0px;
+    }
+    #mainP{
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
