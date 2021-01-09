@@ -2,12 +2,10 @@
 var placeId = [];
 var apiResults = [];
 
-// add the key here 
+// Add the key here 
+var Key = "";
 
-
-var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
-
-//Select homepage submit button
+// Select homepage submit button
 var submitBtn = document.querySelector("button");
 
 // Add click to homepage submit button
@@ -121,13 +119,20 @@ submitBtn.addEventListener("click", function (e) {
 
             console.log(
                 apiResults[i].photoUrl,
-                apiResults[i].results.formatted_address,
+                apiResults[i].results.formatted_address.replace(/VIC|, Australia/g, ""),
                 apiResults[i].results.name,
                 openingHours[i],
                 apiResults[i].results.rating, apiResults[i].results.url
             );
 
-            informationContainer(apiResults[i].photoUrl, apiResults[i].results.name, openingHours[i], apiResults[i].results.formatted_address, apiResults[i].results.rating, apiResults[i].results.url)
+
+            informationContainer(
+                apiResults[i].photoUrl, 
+                apiResults[i].results.name, 
+                openingHours[i], 
+                apiResults[i].results.formatted_address.replace(/VIC|, Australia|/g, ""),
+                apiResults[i].results.rating, 
+                apiResults[i].results.url)
         }
 
         showForm();
@@ -169,15 +174,15 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
     categories = ['', ' ', ' Rating : ',];
 
-    var firstRow = document.querySelector(".row");
+    var firstRow = document.querySelector(".results-row");
 
-    var divContainer = document.createElement("div");
-    divContainer.className = "col s12 m4 l2";
-    firstRow.appendChild(divContainer);
+    var cardContainer = document.createElement("div");
+    cardContainer.className = "col s12 m6 l4 xl2";
+    firstRow.appendChild(cardContainer);
 
     var cardDiv = document.createElement("div");
     cardDiv.className = "card";
-    divContainer.appendChild(cardDiv);
+    cardContainer.appendChild(cardDiv);
 
     var cardImgDiv = document.createElement("div");
     cardImgDiv.className = "card-image";
@@ -202,21 +207,31 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
+    // Add place details and icons to card 
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
+        cardInfo.className = "placeDetails";
+        var info = document.createElement("span");
         var cardItag = document.createElement("i");
         cardItag.className = ArrayOfClassName[i];
-        cardItag.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
+        info.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
-        cardInfo.appendChild(cardItag);
+        cardInfo.appendChild(info);
+        cardInfo.prepend(cardItag);
     }
 
-    var linkDiv = document.createElement("a");
-    linkDiv.className = ArrayOfClassName[3];
-    linkDiv.appendChild(document.createTextNode("directions"));
-    linkDiv.setAttribute("href", arrayInfo[3]);
-    linkDiv.setAttribute("target", "_blank");
+    // Display Google Maps link
+    var linkDiv = document.createElement("div");
+    linkDiv.className = "card-action";
+    var mapsLink = document.createElement("a");
+    var mapsIcon = document.createElement("i")
+    mapsIcon.className = ArrayOfClassName[3];
+    mapsLink.appendChild(document.createTextNode("  directions"));
+    mapsLink.setAttribute("href", arrayInfo[3]);
+    mapsLink.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
+    linkDiv.appendChild(mapsLink);
+    mapsLink.prepend(mapsIcon);
 }
 
 function toggleStar(event) {
