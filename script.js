@@ -8,7 +8,7 @@ var openingHours = [];
 
 
 
-var Key = "";
+var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
 
 // Select homepage submit button
 var submitBtn = document.querySelector("button");
