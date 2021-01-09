@@ -71,7 +71,6 @@ submitBtn.addEventListener("click", function (e) {
     }
 
     fetchId();
-
     console.log(placeId)
 
     // Define a function to call the Google Place Detail API for each result 
