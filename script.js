@@ -1,19 +1,35 @@
 // Create variable to store each place details
 var placeId = [];
 var apiResults = [];
-
 var openingHours = [];
+
 // add the key here 
 
-var Key = "";
+var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
+
+window.addEventListener('keydown', function (e) {
+    if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter') {
+        if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
+            e.preventDefault(); return false;
+        }
+    }
+}, true);
 
 // Select homepage submit button
 var submitBtn = document.querySelector("button");
+var firstRow = document.querySelector(".results-row1");
+var secondRow = document.querySelector(".results-row2");
 
 // Add click to homepage submit button
 submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
+    apiResults = [];
+    placeId = [];
+    firstRow.innerHTML = "";
+    secondRow.innerHTML = "";
 
+    // submitBtn.textContent = "New Search";
+    // submitBtn.className = "reset";
     //Get the suburb, radius selected by the user and the available activity types
     var suburb = document.getElementById("suburb").value;
     var radius = document.getElementById("test5").value * 1000;
@@ -76,6 +92,7 @@ submitBtn.addEventListener("click", function (e) {
     // Define a function to call the Google Place Detail API for each result 
     async function fetchData() {
         for (var i = 0; i < 10; i++) {
+
             // await fetch("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=" + Key )
             var response = await fetch("https://pfotis-eval-prod.apigee.net/cors-place?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=" + Key)
             if (!response.ok) {
@@ -92,7 +109,8 @@ submitBtn.addEventListener("click", function (e) {
 
             console.log(photoRef);
 
-            // Call the Google Photo API (Note: An issue arises if there is no photos in the res)
+            // Call the Google Photo API
+
             // fetch("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+res.result.photos[0].photo_reference+"&key=" + Key )
             var photo = await fetch("https://pfotis-eval-prod.apigee.net/cors-photo?maxwidth=400&photoreference=" + photoRef + "&key=" + Key)
 
@@ -117,16 +135,6 @@ submitBtn.addEventListener("click", function (e) {
                 var hours = apiResults[i].results.opening_hours.weekday_text
             }
             openingHours.push(hours)
-
-            /*console.log(
-                apiResults[i].photoUrl,
-                apiResults[i].results.formatted_address.replace(/VIC|, Australia/g, ""),
-                apiResults[i].results.name,
-                openingHours[i],
-                apiResults[i].results.rating, apiResults[i].results.url
-            );*/
-
-
 
             informationContainer(
                 apiResults[i].photoUrl,
@@ -156,8 +164,6 @@ var textQ = localStorage.getItem("saveMyPlaces");
 if (textQ != null) {
     data = JSON.parse(textQ);
 }
-
-
 
 function informationContainer(imageLink, title, operating, address, rate, link, id) {
 
@@ -193,20 +199,20 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     this categories to card some of them the don't have any text, only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
 
-    var firstRow = document.querySelector(".results-row1");
-    var secondRow = document.querySelector(".results-row2");
+    // var firstRow = document.querySelector(".results-row1");
+    // var secondRow = document.querySelector(".results-row2");
 
     // create the div will include the card
 
     var cardContainer = document.createElement("div");
-    cardContainer.className = "col s6 m4 l2";
+    cardContainer.className = "col s6 m4 l3 xl2";
     firstRow.appendChild(cardContainer)
-    if (firstRow.children.length === 6) {
+    if (firstRow.children.length === 6 && window.innerWidth > 1200) {
         secondRow.appendChild(cardContainer);
     }
 
     var cardDiv = document.createElement("div");
-    cardDiv.className = "card";
+    cardDiv.className = "card large";
     cardContainer.appendChild(cardDiv);
 
     var cardImgDiv = document.createElement("div");
@@ -286,13 +292,14 @@ function toggleStar(event) {
 
         var id = event.target.dataset.id;
 
-        data[0].push(apiResults[id].photoUrl);
+        data[0].push(apiResults[1].photoUrl);
         data[1].push(apiResults[id].results.name);
         data[2].push(openingHours[id]);
         data[3].push(apiResults[id].results.formatted_address);
         data[4].push(apiResults[id].results.rating);
         data[5].push(apiResults[id].results.url);
         localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+
     }
     else {
 

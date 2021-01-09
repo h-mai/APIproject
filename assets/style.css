@@ -128,13 +128,18 @@ i.fas{
 }
 
 .card-content{
-    padding-bottom: 12 px !important;
+    max-height: 100% !important;
+}
+
+.card-title {
+    margin-bottom: 20px !important;
 }
 
 .placeDetails {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+
 
 .fa{
     float: right;
