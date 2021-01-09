@@ -31,6 +31,17 @@
     margin-left: 10px;  
     margin-right: 10px;
 }
+#category{
+    margin-right: 10px;
+}
+#checkCol{
+    font-size: medium;
+}
+
+#submitBtn{
+    margin-bottom: 50px;
+    
+}
 
 /* Favourites page */
 
@@ -52,9 +63,28 @@ i.fas{
 
 /* About Us page */
 
-#aboutUsCard{
-    max-width: 70%;
+#aboutUs{
+    width: 100%;
+    overflow:auto;
 }
+
+/* About Us Logo*/
+
+.MelbourneRebootLogo{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* About Us Paragraph */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
 
 /* Style for the cards-places */
 i.fas{
@@ -93,10 +123,17 @@ i.fas{
     }
     #radius{
         margin-left: 50px;
+      
+    }  
+    #favForm{
+        margin-left: 175px;
     }
-    #aboutUsCard{
-        max-width: 90%;
-    }   
+}
+@media only screen and (max-width: 680px) {
+    #favForm{
+        margin-left: 50px;
+    }
+
 }
 @media only screen and (max-width: 595px) {
     .inputRow{
@@ -111,8 +148,14 @@ i.fas{
     #aboutUsCard{
         max-width: 100%;
     }
+
+    #favForm{
+        margin-left: 10px;
+    }
+
 }
 @media only screen and (max-width: 420px) {
+    
     .inputRow{
         padding-left: 0px;
     }
@@ -128,3 +171,4 @@ i.fas{
 }
 
 
+}

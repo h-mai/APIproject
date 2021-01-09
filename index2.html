@@ -4,22 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!--CSS Stylesheets-->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
-
-
-<!--Javascript databases for time and font-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+
     <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
 
     <title>Melbourne Reboot</title>
 </head>
-
-<!--Navigation Bar-->
 
 <body>
     <header>
@@ -43,59 +39,51 @@
         </nav>
     </header>
 
-    <!--Carousel Slider with Images of Melbourne-->
-
     <div class="carousel carousel-slider">
         <a class="carousel-item" href="#one!"><img
-                src="assets\images\banner size\JPEG\resized banners\cafeImage_resized.jpg"
-                alt="Melbourne Cafe Interior">
+                src="assets\images\banner size\JPEG\resized banners\cafeImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Afta Putta Gunawan</h6>
             </div>
         </a>
         <a class="carousel-item" href="#two!"><img
-                src="assets\images\banner size\JPEG\resized banners\barImage_resized.jpg" alt="Melbourne Bar Culture">
+                src="assets\images\banner size\JPEG\resized banners\barImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Elevate</h6>
             </div>
         </a>
         <a class="carousel-item" href="#three!"><img
-                src="assets\images\banner size\JPEG\resized banners\skylineImage_resized.jpg" alt="Melbourne Skyline">
+                src="assets\images\banner size\JPEG\resized banners\skylineImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by James Wheeler</h6>
             </div>
         </a>
         <a class="carousel-item" href="#four!"><img
-                src="assets\images\banner size\JPEG\resized banners\beachImage_resized.jpg" alt="St Kilda Beach">
+                src="assets\images\banner size\JPEG\resized banners\beachImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Rachel Claire</h6>
             </div>
         </a>
         <a class="carousel-item" href="#five!"><img
-                src="assets\images\banner size\JPEG\resized banners\streetartImage_resized.jpg"
-                alt="Melbourne Street Graffiti">
+                src="assets\images\banner size\JPEG\resized banners\streetartImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Shone Jai</h6>
             </div>
         </a>
         <a class="carousel-item" href="#six!"><img
-                src="assets\images\banner size\JPEG\resized banners\vintageImage_resized.jpg" alt="Vintage Storefront">
+                src="assets\images\banner size\JPEG\resized banners\vintageImage_resized.jpg">
             <div class="carousel-fixed-item right-align">
                 <h6 class="white-text credit">Image by Suzy Hazelwood</h6>
             </div>
         </a>
     </div>
 
-    <!--Instructions to how to use the app-->
-
-    <h5 class="center-align">Lets Reboot our support for Melbourne!</h5>
+    <h5 class="center-align">Lets Reboot Melbournes Economy</h5>
     <p class="center-align">What would you like to do today? Select two preferences below and search for inspiration
-        in your local community. You can also select your favourites by clicking the star and save them for later.</p>
-
-     <!--Input for suburb and radius -->
+        in
+        your local community.</p>
 
     <section>
-
         <div class="row">
             <form class="col s12">
                 <div class="row inputRow">
@@ -105,7 +93,6 @@
                         </label>
                         <input id="suburb" type="text" class="validate">
                     </div>
-
                     <div class="col s12 m10 l7" id="radius">
                         <form action="#" id="radiusTitle">
                             <label for="radius">
@@ -118,26 +105,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    
                     <form id="checkBoxes" action="#">
-
-                        <!--Checkbox Column 1 - Art and Culture, Cafes, Entertainment-->
-                        
                         <div class="col s10 m4">
-                            <p id="checkCol">
+                            <p>
                                 <label>
 
                                     <input type="checkbox" value="Art and Culture" />
-                                    <span><i class="fas fa-palette" id=category></i></span>
+
                                     <span>Art and Culture</span>
                                 </label>
                             </p>
-
-                            <p id="checkCol">
+                            <p>
                                 <label>
 
                                     <input type="checkbox" value="cafe" />
-                                    <span><i class="fas fa-coffee" id=category></i></span>
+
                                     <span>Cafes</span>
                                 </label>
                             </p>
@@ -145,28 +127,25 @@
                                 <label>
 
                                     <input type="checkbox" value="entertainment" />
-                                    <span><i class="fas fa-icons" id=category></i></span>
+
                                     <span>Entertainment</span>
                                 </label>
                             </p>
                         </div>
-
-                        <!--Checkbox Column 2 - Art and Culture, Cafes, Entertainment-->
-
                         <div class="col s10 m4">
-                            <p id="checkCol">
+                            <p>
                                 <label>
 
                                     <input type="checkbox" value="tourist_attraction" />
-                                    <span><i class="fas fa-archway" id=category></i></span>
+
                                     <span>Tourist Attractions</span>
                                 </label>
                             </p>
-                            <p id="checkCol">
+                            <p>
                                 <label>
 
                                     <input type="checkbox" value="park" />
-                                    <span><i class="fas fa-campground" id=category></i></span>
+
                                     <span>Park</span>
                                 </label>
                             </p>
@@ -174,104 +153,70 @@
                                 <label>
 
                                     <input type="checkbox" value="casino" />
-                                    <span><i class="fas fa-dice" id=category></i></span>
-                                    <span>Casino</span>
+
+                                    <span id="checkCol">Casino</span>
                                 </label>
                             </p>
                         </div>
-
-                        <!--Checkbox Column 3 - Nightclub, Restaurant, Shopping-->
-
                         <div class="col s10 m4" id="column3">
-                            <p id="checkCol">
+                            <p>
                                 <label>
 
                                     <input type="checkbox" value="night_club" />
-                                    <span><i class="fas fa-record-vinyl" id=category></i></span>
+
                                     <span>Nightclub</span>
                                 </label>
                             </p>
-                            <p id="checkCol">
+                            <p>
                                 <label>
 
                                     <input type="checkbox" value="restaurant" />
-                                    <span><i class="fas fa-utensils" id=category></i></span>
+
                                     <span>Restaurant</span>
                                 </label>
                             </p>
-
-                            <p id="checkCol">
+                            <p>
                                 <label>
 
                                     <input type="checkbox" value="store" />
-                                    <span><i class="fas fa-shopping-bag" id=category></i></span>
-                                    <span>Shopping</span>
+
+                                    <span id="checkCol">Shopping</span>
                                 </label>
                             </p>
-
                         </div>
-
-                        
-
-                    </form>
-
                 </div>
-
-            </form>
-
-        </div> 
-
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light" id="submitBtn" type="submit" name="action">Submit
+                    </button>
+                </div>
     </section>
-
-
-    <!--Submit Button-->
-    <div>
-        <div class="center-align">
-            <button class="btn waves-effect waves-light" id="submitBtn" type="submit" name="action">Submit</button>
-        </div>
-  </div>
-    <!--Results Section-->
-    <section>
-        <div class="results-row row"></div>
-    </section>
-  
-  <!--User sign up in put to access favourites-->
+    <article>
         <div id="showRow" class="row hide">
 
             <div class="col m1 l4"></div>
             <div class="col m10 l4">
-
-
                 <form>
-            
-                    <h6 class="center-align">Enter your login details to save favorite places then click the star icon</h6>
-
+                    <h6 class="center-align">Enter your login details to save favorite places then click the star icon
+                    </h6>
                     <div class="row">
                         <div class="input-field">
                             <input id="user_name" type="text" class="validate">
                             <label for="user_name">User Name</label>
                         </div>
-                    </div>
 
+                    </div>
                     <div class="input-field">
                         <input id="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
-
-    
                 </form>
             </div>
             <div class="col m1 l4"></div>
         </div>
-    
-        <!--Save Button-->
         <div id="showBtn" class="center-align hide">
             <button class="btn waves-effect waves-light" id="saveBtn" type="submit" name="action">Save</button>
         </div>
-
     </article>
-
-    <!--Footer containing daily weather forcast for Melbourne-->
 
     <footer>
         <footer class="page-footer deep-orange lighten-3 center-align">
@@ -293,14 +238,13 @@
         </footer>
 
     </footer>
-
-    <!--Javascript list-->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/carousel.js"></script>
     <script src="saveLogin.js"></script>
     <script src="script.js"></script>
     <script src="weatherAPI.js"></script>
+
+
 
 </body>
 
