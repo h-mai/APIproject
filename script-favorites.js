@@ -2,19 +2,19 @@
 var data = new Array(6);
 
 for (var i = 0; i < data.length; i++) {
-  data[i] = [];
+    data[i] = [];
 }
 
 // check if there is any data in the localstorage from previous use
 
 var textQ = localStorage.getItem("saveMyPlaces");
-if(textQ !=null){
+if (textQ != null) {
     data = JSON.parse(textQ);
 }
 
 
-for(var i=0; i<data[0].length; i++){
-    informationContainer(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
+for (var i = 0; i < data[0].length; i++) {
+    informationContainer(data[0][i], data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
 }
 
 
@@ -58,7 +58,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     // create the div will include the card
 
     var cardContainer = document.createElement("div");
-    cardContainer.className = "col s6 m4 l2";
+    cardContainer.className = "col s6 m4 l3 xl2";
     firstRow.appendChild(cardContainer)
     if (firstRow.children.length === 6) {
         secondRow.appendChild(cardContainer);
@@ -98,25 +98,33 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
-     // here is the Loop for create the "openning hours" , "address" , " rating" 
+    // here is the Loop for create the "openning hours" , "address" , " rating" 
 
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
+        cardInfo.className = "placeDetails";
+        var info = document.createElement("span");
         var cardItag = document.createElement("i");
         cardItag.className = ArrayOfClassName[i];
-        cardItag.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
+        info.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
-        cardInfo.appendChild(cardItag);
+        cardInfo.appendChild(info);
+        cardInfo.prepend(cardItag);
     }
 
-    // last is the link for the direction for the place
+    // Display Google Maps link
+    var linkDiv = document.createElement("div");
+    linkDiv.className = "card-action";
+    var mapsLink = document.createElement("a");
+    var mapsIcon = document.createElement("i")
+    mapsIcon.className = ArrayOfClassName[3];
+    mapsLink.appendChild(document.createTextNode("  directions"));
+    mapsLink.setAttribute("href", arrayInfo[3]);
+    mapsLink.setAttribute("target", "_blank");
 
-    var linkDiv = document.createElement("a");
-    linkDiv.className = ArrayOfClassName[3];
-    linkDiv.appendChild(document.createTextNode("directions"));
-    linkDiv.setAttribute("href", arrayInfo[3]);
-    linkDiv.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
+    linkDiv.appendChild(mapsLink);
+    mapsLink.prepend(mapsIcon);
 }
 
 // this function change the status of the star and remove the information to local storage
@@ -127,10 +135,10 @@ function toggleStar(event) {
 
     var id = event.target.dataset.id;
 
-    for(var i=0; i<6; i++){
-        data[i].splice(id,1);
+    for (var i = 0; i < 6; i++) {
+        data[i].splice(id, 1);
     }
-    
+
     localStorage.setItem("saveMyPlaces", JSON.stringify(data));
 
     window.location.reload();
