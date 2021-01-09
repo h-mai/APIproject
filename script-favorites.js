@@ -14,7 +14,7 @@ if(textQ !=null){
 
 
 for(var i=0; i<data[0].length; i++){
-    informationContainer(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
+   // informationContainer(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
 }
 
 
@@ -121,7 +121,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
 // this function change the status of the star and remove the information to local storage
 
-function toggleStar(event) {
+/*function toggleStar(event) {
 
     event.target.classList.toggle("fa-star-o");
 
@@ -134,4 +134,4 @@ function toggleStar(event) {
     localStorage.setItem("saveMyPlaces", JSON.stringify(data));
 
     window.location.reload();
-}
+}*/

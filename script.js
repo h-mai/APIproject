@@ -117,7 +117,7 @@ submitBtn.addEventListener("click", function (e) {
             if (apiResults[i].results.opening_hours) {
                 var hours = apiResults[i].results.opening_hours.weekday_text
             }
-            openingHours.push(hours)
+            openingHours.push(hours);
 
             /*console.log(
                 apiResults[i].photoUrl,
@@ -127,7 +127,10 @@ submitBtn.addEventListener("click", function (e) {
                 apiResults[i].results.rating, apiResults[i].results.url
             );*/
 
-
+            // in case there is not rating at this time user visit the website
+            if(apiResults[i].results.rating == null){
+                apiResults[i].results.rating = "-";
+            }
 
             informationContainer(
                 apiResults[i].photoUrl,
@@ -135,7 +138,8 @@ submitBtn.addEventListener("click", function (e) {
                 openingHours[i],
                 apiResults[i].results.formatted_address.replace(/VIC|, Australia|/g, ""),
                 apiResults[i].results.rating,
-                apiResults[i].results.url)
+                apiResults[i].results.url,
+                i);
 
         }
 
@@ -277,15 +281,18 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 function toggleStar(event) {
 
     var saveInfo = event.target.getAttribute("data-save");
-
-    console.log(saveInfo);
-
+    var id = event.target.dataset.id;
+    event.target.classList.toggle("fa-star-o");
+    console.log(id);
     if (saveInfo == "not-saved") {
 
-        event.target.classList.toggle("fa-star-o");
-        event.target.setAttribute("data-save", "saved");
+        /* change the status to "saved" to be able from the javascript in case the user unfavourite to delete from the localstorage
+        
+         when the card saved as favourite from user then the "data-id" change from the spot get in to array in case the user unfavourite
+        before change page*/
 
-        var id = event.target.dataset.id;
+        event.target.setAttribute("data-save", "saved");
+        event.target.setAttribute("data-id",data[0].length);
 
         data[0].push(apiResults[id].photoUrl);
         data[1].push(apiResults[id].results.name);
@@ -301,7 +308,6 @@ function toggleStar(event) {
         for (var i = 0; i < 6; i++) {
             data[i].splice(id, 1);
         }
-
         localStorage.setItem("saveMyPlaces", JSON.stringify(data));
     }
 
@@ -312,14 +318,23 @@ function showForm() {
     document.getElementById("showBtn").classList.remove("hide");
 };
 
-//Clears all favourites 
+//Clears all favourites
+
 var clearBtn = document.getElementById("clearBtn");
 
 clearBtn.addEventListener("click", function (e) {
     clearFavourites();
 });
-function clearFavourites() {
 
+// the following fuction clear the arrays from the data and save the new empty array to local storage and reload the page
+
+function clearFavourites() {
+    var index="0";
+    for(var i=0; i<6; i++){
+        data[i].splice(index,data[i].length);
+    }
+    localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+    window.location.reload();
 }
 
 
