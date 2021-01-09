@@ -5,10 +5,7 @@ var apiResults = [];
 var openingHours = [];
 // add the key here 
 
-
-
-
-var Key = "";
+var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
 
 // Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -74,7 +71,6 @@ submitBtn.addEventListener("click", function (e) {
     }
 
     fetchId();
-
     console.log(placeId)
 
     // Define a function to call the Google Place Detail API for each result 
