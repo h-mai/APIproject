@@ -23,19 +23,21 @@
 }
 #saveBtn{
     margin-bottom: 20px;
-} 
-
+}
 #showRow{
-    text-align-last: center;
     margin-left: 10px;  
     margin-right: 10px;
 }
-
 #category{
     margin-right: 10px;
 }
 #checkCol{
-    font-size:large;
+    font-size: medium;
+}
+
+#submitBtn{
+    margin-bottom: 50px;
+    
 }
 
 /* Favourites page */
@@ -59,10 +61,25 @@ i.fa{
 
 /* About Us page */
 
-#aboutUsCard{
-    max-width: 70%;
+#aboutUs{
+    width: 100%;
+    overflow:auto;
 }
 
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.MelbourneRebootLogo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 /* Style for the cards-places */
 
 .card-image img{
@@ -93,10 +110,7 @@ a{
     }
     #radius{
         margin-left: 50px;
-    }
-    #aboutUsCard{
-        max-width: 90%;
-    }   
+    }  
     #favForm{
         margin-left: 175px;
     }
@@ -122,8 +136,10 @@ a{
     #favForm{
         margin-left: 10px;
     }
+
 }
 @media only screen and (max-width: 420px) {
+    
     .inputRow{
         padding-left: 0px;
     }
@@ -139,3 +155,4 @@ a{
 }
 
 
+}
