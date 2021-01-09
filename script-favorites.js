@@ -52,17 +52,21 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     this categotiries to card some of them the don't have any text only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
 
-    var firstRow = document.querySelector(".favorites");
+    var firstRow = document.querySelector(".favorites1");
+    var secondRow = document.querySelector(".favorites2");
 
     // create the div will include the card
 
-    var divContainer = document.createElement("div");
-    divContainer.className = "col s12 m4 l2";
-    firstRow.appendChild(divContainer);
+    var cardContainer = document.createElement("div");
+    cardContainer.className = "col s6 m4 l2";
+    firstRow.appendChild(cardContainer)
+    if (firstRow.children.length === 6) {
+        secondRow.appendChild(cardContainer);
+    }
 
     var cardDiv = document.createElement("div");
     cardDiv.className = "card";
-    divContainer.appendChild(cardDiv);
+    cardContainer.appendChild(cardDiv);
 
     var cardImgDiv = document.createElement("div");
     cardImgDiv.className = "card-image";
