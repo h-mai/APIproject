@@ -134,6 +134,8 @@ submitBtn.addEventListener("click", function (e) {
                 apiResults[i].results.rating, 
                 apiResults[i].results.url)
         }
+
+        showForm();
     }
 });
 
@@ -192,7 +194,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardImgDiv.appendChild(image);
 
     var cardContentDiv = document.createElement("div");
-    cardContentDiv.className = "card-content";
+    cardContentDiv.className = "card-content black-text";
     cardDiv.appendChild(cardContentDiv);
 
     var favorite = document.createElement("i");
@@ -201,7 +203,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardContentDiv.appendChild(favorite);
 
     var cardTitle = document.createElement("h6");
-    cardTitle.className = "card-title";
+    cardTitle.className = "card-title black-text";
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
@@ -230,13 +232,26 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     cardContentDiv.appendChild(linkDiv);
     linkDiv.appendChild(mapsLink);
     mapsLink.prepend(mapsIcon);
-
 }
 
 function toggleStar(event) {
     event.target.classList.toggle("fa-star");
 }
 
+function showForm(){
+    document.getElementById("showRow").classList.remove("hide");
+    document.getElementById("showBtn").classList.remove("hide");
+};
+
+//Clears all favourites 
+var clearBtn = document.getElementById("clearBtn");
+
+clearBtn.addEventListener("click", function (e) {
+    clearFavourites();
+});
+function clearFavourites(){
+
+}
 
 
 
