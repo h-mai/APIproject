@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--CSS Stylesheets-->
+    <!--CSS Stylesheets-->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
 
 
-<!--Javascript databases for time and font-->
+    <!--Javascript databases for time and font-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://kit.fontawesome.com/55b8ef16f8.js" crossorigin="anonymous"></script>
 
@@ -89,10 +89,10 @@
     <!--Instructions to how to use the app-->
 
     <h5 class="center-align">Lets Reboot our support for Melbourne!</h5>
-    <p class="center-align">What would you like to do today? Select two preferences below and search for inspiration
+    <p class="center-align" id="mainP">What would you like to do today? Select two preferences below and search for inspiration
         in your local community. You can also select your favourites by clicking the star and save them for later.</p>
 
-     <!--Input for suburb and radius -->
+    <!--Input for suburb and radius -->
 
     <section>
 
@@ -118,11 +118,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    
+
                     <form id="checkBoxes" action="#">
 
                         <!--Checkbox Column 1 - Art and Culture, Cafes, Entertainment-->
-                        
+
                         <div class="col s10 m4">
                             <p id="checkCol">
                                 <label>
@@ -151,7 +151,7 @@
                             </p>
                         </div>
 
-                        <!--Checkbox Column 2 - Art and Culture, Cafes, Entertainment-->
+                        <!--Checkbox Column 2 - Tourist Attractions, Park, Casino-->
 
                         <div class="col s10 m4">
                             <p id="checkCol">
@@ -211,7 +211,7 @@
 
                         </div>
 
-                        
+
 
                     </form>
 
@@ -219,7 +219,7 @@
 
             </form>
 
-        </div> 
+        </div>
 
     </section>
 
@@ -229,10 +229,11 @@
         <div class="center-align">
             <button class="btn waves-effect waves-light" id="submitBtn" type="submit" name="action">Submit</button>
         </div>
-  </div>
+    </div>
     <!--Results Section-->
     <section>
-        <div class="results-row row"></div>
+        <div class="results-row1 row"></div>
+        <div class="results-row2 row"></div>
     </section>
 
     <!--Preloader animation-->
@@ -243,41 +244,38 @@
   <!--User sign up in put to access favourites-->
         <div id="showRow" class="row hide">
 
-            <div class="col m1 l4"></div>
-            <div class="col m10 l4">
+        <div class="col m1 l4"></div>
+        <div class="col m10 l4">
 
 
-                <form>
-            
-                    <h6 class="center-align">Enter your login details to save favorite places then click the star icon</h6>
+            <form>
 
-                    <div class="row">
-                        <div class="input-field">
-                            <input id="user_name" type="text" class="validate">
-                            <label for="user_name">User Name</label>
-                        </div>
-                    </div>
+                <h6 class="center-align">Enter your login details to save favorite places then click the star icon</h6>
 
+                <div class="row">
                     <div class="input-field">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
+                        <input id="user_name" type="text" class="validate">
+                        <label for="user_name">User Name</label>
                     </div>
+                </div>
 
-    
-                </form>
-            </div>
-            <div class="col m1 l4"></div>
-        </div>
-    
-        <!--Save Button-->
-        <div id="showBtn" class="center-align hide">
-            <button class="btn waves-effect waves-light" id="saveBtn" type="submit" name="action">Save</button>
-        </div>
+                <div class="input-field">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
 
-    </article>
+
+            </form>
+        </div>
+        <div class="col m1 l4"></div>
+    </div>
+
+    <!--Save Button-->
+    <div id="showBtn" class="center-align hide">
+        <button class="btn waves-effect waves-light" id="saveBtn" type="submit" name="action">Save</button>
+    </div>
 
     <!--Footer containing daily weather forcast for Melbourne-->
-
     <footer>
         <footer class="page-footer deep-orange lighten-3 center-align">
             <div class="container">

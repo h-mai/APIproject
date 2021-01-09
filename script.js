@@ -5,7 +5,7 @@ var apiResults = [];
 var openingHours = [];
 // add the key here 
 
-var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
+var Key = "";
 
 // Select homepage submit button
 var submitBtn = document.querySelector("button");
@@ -129,11 +129,11 @@ submitBtn.addEventListener("click", function (e) {
 
 
             informationContainer(
-                apiResults[i].photoUrl, 
-                apiResults[i].results.name, 
-                openingHours[i], 
+                apiResults[i].photoUrl,
+                apiResults[i].results.name,
+                openingHours[i],
                 apiResults[i].results.formatted_address.replace(/VIC|, Australia|/g, ""),
-                apiResults[i].results.rating, 
+                apiResults[i].results.rating,
                 apiResults[i].results.url)
 
         }
@@ -147,13 +147,13 @@ submitBtn.addEventListener("click", function (e) {
 var data = new Array(6);
 
 for (var i = 0; i < data.length; i++) {
-  data[i] = [];
+    data[i] = [];
 }
 
 // check if there is any data in the localstorage from previous use
 
 var textQ = localStorage.getItem("saveMyPlaces");
-if(textQ !=null){
+if (textQ != null) {
     data = JSON.parse(textQ);
 }
 
@@ -182,25 +182,28 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     // store all the class name to array and with the "for loop to insert to <i>"
     var ArrayOfClassName = ["fas fa-clock", "fas fa-map-marker-alt", "fas fa-heart", "fas fa-directions", "fa fa-star fa-star-o"];
 
-    // store all the information about the place/restaurant/cafe to array and with the "for loop to insert to <i>"
+    // store all the information about the place/restaurant/cafe to array and with the "for loop to insert to <span>"
     var arrayInfo = [];
     arrayInfo.push(hours);
     arrayInfo.push(address);
     arrayInfo.push(rate);
     arrayInfo.push(link);
 
-    /* after the title there is four catgories follow in the card "openning hours" , "address" , " rating" because there is Loop for to add 
-    this categotiries to card some of them the don't have any text only a space and the rating only the title */
+    /* after the title there is four catgories follow in the card "opening hours" , "address" , " rating" because there is Loop to add 
+    this categories to card some of them the don't have any text, only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
 
-    var firstRow = document.querySelector(".results-row");
-
+    var firstRow = document.querySelector(".results-row1");
+    var secondRow = document.querySelector(".results-row2");
 
     // create the div will include the card
 
     var cardContainer = document.createElement("div");
-    cardContainer.className = "col s12 m6 l4 xl2";
-    firstRow.appendChild(cardContainer);
+    cardContainer.className = "col s6 m4 l2";
+    firstRow.appendChild(cardContainer)
+    if (firstRow.children.length === 6) {
+        secondRow.appendChild(cardContainer);
+    }
 
     var cardDiv = document.createElement("div");
     cardDiv.className = "card";
@@ -226,7 +229,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     var favorite = document.createElement("i");
     favorite.setAttribute("onclick", "toggleStar(event)");
     favorite.setAttribute("data-id", id);
-    favorite.setAttribute("data-save","not-saved");
+    favorite.setAttribute("data-save", "not-saved");
     favorite.className = ArrayOfClassName[4];
     cardContentDiv.appendChild(favorite);
 
@@ -240,7 +243,7 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
 
     // here is the Loop for create the "openning hours" , "address" , " rating" 
     // Add place details and icons to card 
-  
+
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
         cardInfo.className = "placeDetails";
@@ -275,12 +278,12 @@ function toggleStar(event) {
     var saveInfo = event.target.getAttribute("data-save");
 
     console.log(saveInfo);
-    
-    if(saveInfo == "not-saved"){
+
+    if (saveInfo == "not-saved") {
 
         event.target.classList.toggle("fa-star-o");
-        event.target.setAttribute("data-save","saved");
-        
+        event.target.setAttribute("data-save", "saved");
+
         var id = event.target.dataset.id;
 
         data[0].push(apiResults[id].photoUrl);
@@ -291,19 +294,19 @@ function toggleStar(event) {
         data[5].push(apiResults[id].results.url);
         localStorage.setItem("saveMyPlaces", JSON.stringify(data));
     }
-    else{
+    else {
 
-        event.target.setAttribute("data-save","not-saved");
-        for(var i=0; i<6; i++){
-            data[i].splice(id,1);
+        event.target.setAttribute("data-save", "not-saved");
+        for (var i = 0; i < 6; i++) {
+            data[i].splice(id, 1);
         }
-        
+
         localStorage.setItem("saveMyPlaces", JSON.stringify(data));
     }
 
 }
 
-function showForm(){
+function showForm() {
     document.getElementById("showRow").classList.remove("hide");
     document.getElementById("showBtn").classList.remove("hide");
 };
@@ -314,7 +317,7 @@ var clearBtn = document.getElementById("clearBtn");
 clearBtn.addEventListener("click", function (e) {
     clearFavourites();
 });
-function clearFavourites(){
+function clearFavourites() {
 
 }
 

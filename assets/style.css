@@ -30,6 +30,10 @@ body, html {
     background-color: rgba(128, 128, 128, 0.753) ;
     display: inline;
 }
+#mainP{
+    padding-left: 50px;
+    padding-right: 50px;
+}
 .inputRow{
     padding-left: 150px;
 }
@@ -57,6 +61,12 @@ body, html {
 .progress{
     position: relative;
 }
+
+
+a {
+    color: #ff8a65;
+}
+
 /* Favourites page */
 
 #favLoginTitle{
@@ -190,5 +200,9 @@ i.fas{
     }
     #radius{
         margin-left: 0px;
+    }
+    #mainP{
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
