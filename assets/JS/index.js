@@ -7,6 +7,7 @@ var openingHours = [];
 
 var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
 
+// Disable Enter key for input
 window.addEventListener('keydown', function (e) {
     if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter') {
         if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
