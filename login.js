@@ -87,7 +87,7 @@ function displayFavorites(imageLink, title, operating, address, rate, link, id) 
     }
 
     var cardDiv = document.createElement("div");
-    cardDiv.className = "card";
+    cardDiv.className = "card large";
     cardContainer.appendChild(cardDiv);
 
     var cardImgDiv = document.createElement("div");
@@ -122,23 +122,31 @@ function displayFavorites(imageLink, title, operating, address, rate, link, id) 
 
      // here is the Loop for create the "openning hours" , "address" , " rating" 
 
-    for (var i = 0; i < categories.length; i++) {
+     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
+        cardInfo.className = "placeDetails";
+        var info = document.createElement("span");
         var cardItag = document.createElement("i");
         cardItag.className = ArrayOfClassName[i];
-        cardItag.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
+        info.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
-        cardInfo.appendChild(cardItag);
+        cardInfo.appendChild(info);
+        cardInfo.prepend(cardItag);
     }
 
-    // last is the link for the direction for the place
+    // Display Google Maps link
+    var linkDiv = document.createElement("div");
+    linkDiv.className = "card-action";
+    var mapsLink = document.createElement("a");
+    var mapsIcon = document.createElement("i")
+    mapsIcon.className = ArrayOfClassName[3];
+    mapsLink.appendChild(document.createTextNode("  directions"));
+    mapsLink.setAttribute("href", arrayInfo[3]);
+    mapsLink.setAttribute("target", "_blank");
 
-    var linkDiv = document.createElement("a");
-    linkDiv.className = ArrayOfClassName[3];
-    linkDiv.appendChild(document.createTextNode("directions"));
-    linkDiv.setAttribute("href", arrayInfo[3]);
-    linkDiv.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
+    linkDiv.appendChild(mapsLink);
+    mapsLink.prepend(mapsIcon);
 }
 
 // this function change the status of the star and remove the information to local storage

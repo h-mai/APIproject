@@ -5,7 +5,7 @@ var openingHours = [];
 
 // add the key here 
 
-var Key = "";
+var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
 
 window.addEventListener('keydown', function (e) {
     if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter') {
@@ -204,9 +204,6 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     /* after the title there is four catgories follow in the card "opening hours" , "address" , " rating" because there is Loop to add 
     this categories to card some of them the don't have any text, only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
-
-    // var firstRow = document.querySelector(".results-row1");
-    // var secondRow = document.querySelector(".results-row2");
 
     // create the div will include the card
 
