@@ -1,3 +1,5 @@
+// saves the users login details and hides the form
+
 var saveBtn = document.getElementById("saveBtn");
 saveBtn.addEventListener("click", function(e){
     e.preventDefault();

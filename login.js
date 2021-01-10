@@ -3,18 +3,26 @@ var loginBtn = document.getElementById("loginBtn");
 // create Array data to store the favorites choices from the user
 var data = new Array(6);
 
-for (var i = 0; i < data.length; i++) {
-  data[i] = [];
+function checkForFavs() {
+    for (var i = 0; i < data.length; i++) {
+        data[i] = [];
+    }
+
+    // check if there is any data in the localstorage from previous use
+
+    var textQ = localStorage.getItem("saveMyPlaces");
+    if (textQ) {
+        data = JSON.parse(textQ);
+    }
 }
+document.addEventListener("DOMContentLoaded", function () {
+    init();
+});
+// window.onload = init();
 
-// check if there is any data in the localstorage from previous use
+// allows the user to login and displays the favourites
 
-var textQ = localStorage.getItem("saveMyPlaces");
-if(textQ !=null){
-    data = JSON.parse(textQ);
-}
-
-loginBtn.addEventListener("click", function(e){
+loginBtn.addEventListener("click", function (e) {
     e.preventDefault();
     var loginName = document.getElementById("login_name").value;
     var loginPassword = document.getElementById("loginPassword").value;
@@ -22,19 +30,21 @@ loginBtn.addEventListener("click", function(e){
     checkLogin(loginName, loginPassword);
 });
 
-function checkLogin(user, password){
+//checks the login details against the details saved in local storage
+
+function checkLogin(user, password) {
     var storedUser = localStorage.getItem("user");
     var storedPassword = localStorage.getItem("password");
-    if(storedUser === user && storedPassword === password) {
-        hideForm();
-        for(var i=0; i<data[0].length; i++){
-            displayFavorites(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
-        }
+    if (storedUser === user && storedPassword === password) {
+        localStorage.setItem("login", true);
+        window.location.reload()
     } else {
-        M.toast({html: 'Login Error'});
-};
+        M.toast({ html: 'Login Error' });
+    };
 }
-function hideForm(){
+
+//hides the form when the login is successful
+function hideForm() {
     document.getElementById("loginForm").classList.add("hide");
     document.getElementById("loginBtn").classList.add("hide");
     document.getElementById("clearBtn").classList.remove("hide");
@@ -120,7 +130,7 @@ function displayFavorites(imageLink, title, operating, address, rate, link, id) 
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
-     // here is the Loop for create the "openning hours" , "address" , " rating" 
+    // here is the Loop for create the "openning hours" , "address" , " rating" 
 
      for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
@@ -157,9 +167,46 @@ function toggleStar(event) {
 
     var id = event.target.dataset.id;
 
-    for(var i=0; i<6; i++){
-        data[i].splice(id,1);
+    for (var i = 0; i < 6; i++) {
+        data[i].splice(id, 1);
     }
-    
     localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+
+    window.location.reload();
+}
+function isloggedIn() {
+    var loginStatus = localStorage.getItem("login");
+    return (loginStatus)
+
+}
+
+//checks if the user is logged in to display either login form or favourites
+
+function init() {
+    if (isloggedIn()) {
+        checkForFavs()
+        hideForm()
+        for(var i=0; i<data[0].length; i++){
+            displayFavorites(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
+    }
+    }
+};
+
+//Clears all favourites
+
+var clearBtn = document.getElementById("clearBtn");
+
+clearBtn.addEventListener("click", function (e) {
+    clearFavourites();
+});
+
+// the following fuction clear the arrays from the data and save the new empty array to local storage and reload the page
+
+function clearFavourites() {
+    var index = "0";
+    for (var i = 0; i < 6; i++) {
+        data[i].splice(index, data[i].length);
+    }
+    localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+    window.location.reload();
 }
