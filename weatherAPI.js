@@ -30,7 +30,7 @@ async function fetchWeather () {
     console.log(resp.DailyForecasts[0].Day.Icon)
 
     
-    var currentDate = moment().format('MMMM Do YYYY');
+    var currentDate = moment().format('LLLL').slice(0, -8);
     var minTemp = "Min " + Math.trunc(resp.DailyForecasts[0].Temperature.Minimum.Value) + " °";
     var maxTemp = "Max " + Math.trunc(resp.DailyForecasts[0].Temperature.Maximum.Value) + " °";
     var weatherText = resp.DailyForecasts[0].Day.IconPhrase;
@@ -38,7 +38,7 @@ async function fetchWeather () {
     weatherIcon.src = "assets/images/weatherImages/" + resp.DailyForecasts[0].Day.Icon + ".png";
 
     console.log(displayWeather)
-    displayWeather.textContent = currentDate + "  " + minTemp + "  " +maxTemp + "  " + weatherText;
+    displayWeather.textContent = currentDate + "  " + minTemp + "  " + maxTemp + "  " + weatherText;
     displayWeather.appendChild(weatherIcon);
 
 }
