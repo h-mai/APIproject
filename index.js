@@ -152,11 +152,15 @@ submitBtn.addEventListener("click", function (e) {
                 i);
 
         }
-
-        showForm();
+        checkIfUserLoggedIn();
     }
 });
 
+function checkIfUserLoggedIn() {
+    var loginStatus = localStorage.getItem("login");
+    if(!loginStatus)
+    showForm();
+}
 // create Array data to store the favorites choices from the user
 
 var data = new Array(6);
@@ -323,24 +327,6 @@ function showForm() {
     document.getElementById("showBtn").classList.remove("hide");
 };
 
-//Clears all favourites
-
-var clearBtn = document.getElementById("clearBtn");
-
-clearBtn.addEventListener("click", function (e) {
-    clearFavourites();
-});
-
-// the following fuction clear the arrays from the data and save the new empty array to local storage and reload the page
-
-function clearFavourites() {
-    var index = "0";
-    for (var i = 0; i < 6; i++) {
-        data[i].splice(index, data[i].length);
-    }
-    localStorage.setItem("saveMyPlaces", JSON.stringify(data));
-    window.location.reload();
-}
 
 function showPreloader() {
     document.querySelector(".progress").classList.remove("hide");
