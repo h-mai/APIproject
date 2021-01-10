@@ -3,18 +3,28 @@ var loginBtn = document.getElementById("loginBtn");
 // create Array data to store the favorites choices from the user
 var data = new Array(6);
 
-for (var i = 0; i < data.length; i++) {
-  data[i] = [];
-}
+function checkForFavs() {
+    for (var i = 0; i < data.length; i++) {
+        data[i] = [];
+    }
 
-// check if there is any data in the localstorage from previous use
+    // check if there is any data in the localstorage from previous use
 
-var textQ = localStorage.getItem("saveMyPlaces");
-if(textQ !=null){
-    data = JSON.parse(textQ);
-}
+    var textQ = localStorage.getItem("saveMyPlaces");
+    if (textQ) {
+        data = JSON.parse(textQ);
+    }
+};
 
-loginBtn.addEventListener("click", function(e){
+//initialises the page load
+
+document.addEventListener("DOMContentLoaded", function () {
+    init();
+});
+
+// allows the user to login and displays the favourites
+
+loginBtn.addEventListener("click", function (e) {
     e.preventDefault();
     var loginName = document.getElementById("login_name").value;
     var loginPassword = document.getElementById("loginPassword").value;
@@ -22,19 +32,21 @@ loginBtn.addEventListener("click", function(e){
     checkLogin(loginName, loginPassword);
 });
 
-function checkLogin(user, password){
+//checks the login details against the details saved in local storage
+
+function checkLogin(user, password) {
     var storedUser = localStorage.getItem("user");
     var storedPassword = localStorage.getItem("password");
-    if(storedUser === user && storedPassword === password) {
-        hideForm();
-        for(var i=0; i<data[0].length; i++){
-            displayFavorites(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
-        }
+    if (storedUser === user && storedPassword === password) {
+        localStorage.setItem("login", true);
+        window.location.reload()
     } else {
-        M.toast({html: 'Login Error'});
+        M.toast({ html: 'Login Error' });
+    };
 };
-}
-function hideForm(){
+
+//hides the form when the login is successful
+function hideForm() {
     document.getElementById("loginForm").classList.add("hide");
     document.getElementById("loginBtn").classList.add("hide");
     document.getElementById("clearBtn").classList.remove("hide");
@@ -87,7 +99,7 @@ function displayFavorites(imageLink, title, operating, address, rate, link, id) 
     }
 
     var cardDiv = document.createElement("div");
-    cardDiv.className = "card";
+    cardDiv.className = "card large";
     cardContainer.appendChild(cardDiv);
 
     var cardImgDiv = document.createElement("div");
@@ -120,28 +132,36 @@ function displayFavorites(imageLink, title, operating, address, rate, link, id) 
     cardTitle.appendChild(document.createTextNode(title));
     cardContentDiv.appendChild(cardTitle);
 
-     // here is the Loop for create the "openning hours" , "address" , " rating" 
+    // here is the Loop for create the "openning hours" , "address" , " rating" 
 
     for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
+        cardInfo.className = "placeDetails";
+        var info = document.createElement("span");
         var cardItag = document.createElement("i");
         cardItag.className = ArrayOfClassName[i];
-        cardItag.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
+        info.appendChild(document.createTextNode(categories[i] + arrayInfo[i]));
         cardContentDiv.appendChild(cardInfo);
-        cardInfo.appendChild(cardItag);
+        cardInfo.appendChild(info);
+        cardInfo.prepend(cardItag);
     }
 
-    // last is the link for the direction for the place
+    // Display Google Maps link
+    var linkDiv = document.createElement("div");
+    linkDiv.className = "card-action";
+    var mapsLink = document.createElement("a");
+    var mapsIcon = document.createElement("i")
+    mapsIcon.className = ArrayOfClassName[3];
+    mapsLink.appendChild(document.createTextNode("  directions"));
+    mapsLink.setAttribute("href", arrayInfo[3]);
+    mapsLink.setAttribute("target", "_blank");
 
-    var linkDiv = document.createElement("a");
-    linkDiv.className = ArrayOfClassName[3];
-    linkDiv.appendChild(document.createTextNode("directions"));
-    linkDiv.setAttribute("href", arrayInfo[3]);
-    linkDiv.setAttribute("target", "_blank");
     cardContentDiv.appendChild(linkDiv);
-}
+    linkDiv.appendChild(mapsLink);
+    mapsLink.prepend(mapsIcon);
+};
 
-// this function change the status of the star and remove the information to local storage
+// this function changes the status of the star and removes the information from local storage
 
 function toggleStar(event) {
 
@@ -149,9 +169,47 @@ function toggleStar(event) {
 
     var id = event.target.dataset.id;
 
-    for(var i=0; i<6; i++){
-        data[i].splice(id,1);
+    for (var i = 0; i < 6; i++) {
+        data[i].splice(id, 1);
     }
-    
     localStorage.setItem("saveMyPlaces", JSON.stringify(data));
-}
+
+    window.location.reload();
+};
+
+function isloggedIn() {
+    var loginStatus = localStorage.getItem("login");
+    return (loginStatus)
+
+};
+
+//checks if the user is logged in to display either the login form or favourites
+
+function init() {
+    if (isloggedIn()) {
+        checkForFavs();
+        hideForm();
+        for (var i = 0; i < data[0].length; i++) {
+            displayFavorites(data[0][i], data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
+        }
+    }
+};
+
+//Clears all favourites
+
+var clearBtn = document.getElementById("clearBtn");
+
+clearBtn.addEventListener("click", function (e) {
+    clearFavourites();
+});
+
+// the following fuction clears the arrays from the data and saves an empty array to local storage and reloads the page
+
+function clearFavourites() {
+    var index = "0";
+    for (var i = 0; i < 6; i++) {
+        data[i].splice(index, data[i].length);
+    }
+    localStorage.setItem("saveMyPlaces", JSON.stringify(data));
+    window.location.reload();
+};
