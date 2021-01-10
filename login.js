@@ -14,11 +14,13 @@ function checkForFavs() {
     if (textQ) {
         data = JSON.parse(textQ);
     }
-}
+};
+
+//initialises the page load
+
 document.addEventListener("DOMContentLoaded", function () {
     init();
 });
-// window.onload = init();
 
 // allows the user to login and displays the favourites
 
@@ -41,7 +43,7 @@ function checkLogin(user, password) {
     } else {
         M.toast({ html: 'Login Error' });
     };
-}
+};
 
 //hides the form when the login is successful
 function hideForm() {
@@ -132,7 +134,7 @@ function displayFavorites(imageLink, title, operating, address, rate, link, id) 
 
     // here is the Loop for create the "openning hours" , "address" , " rating" 
 
-     for (var i = 0; i < categories.length; i++) {
+    for (var i = 0; i < categories.length; i++) {
         var cardInfo = document.createElement("div");
         cardInfo.className = "placeDetails";
         var info = document.createElement("span");
@@ -157,9 +159,9 @@ function displayFavorites(imageLink, title, operating, address, rate, link, id) 
     cardContentDiv.appendChild(linkDiv);
     linkDiv.appendChild(mapsLink);
     mapsLink.prepend(mapsIcon);
-}
+};
 
-// this function change the status of the star and remove the information to local storage
+// this function changes the status of the star and removes the information from local storage
 
 function toggleStar(event) {
 
@@ -173,22 +175,23 @@ function toggleStar(event) {
     localStorage.setItem("saveMyPlaces", JSON.stringify(data));
 
     window.location.reload();
-}
+};
+
 function isloggedIn() {
     var loginStatus = localStorage.getItem("login");
     return (loginStatus)
 
-}
+};
 
-//checks if the user is logged in to display either login form or favourites
+//checks if the user is logged in to display either the login form or favourites
 
 function init() {
     if (isloggedIn()) {
-        checkForFavs()
-        hideForm()
-        for(var i=0; i<data[0].length; i++){
-            displayFavorites(data[0][i],data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
-    }
+        checkForFavs();
+        hideForm();
+        for (var i = 0; i < data[0].length; i++) {
+            displayFavorites(data[0][i], data[1][i], data[2][i], data[3][i], data[4][i], data[5][i], i);
+        }
     }
 };
 
@@ -200,7 +203,7 @@ clearBtn.addEventListener("click", function (e) {
     clearFavourites();
 });
 
-// the following fuction clear the arrays from the data and save the new empty array to local storage and reload the page
+// the following fuction clears the arrays from the data and saves an empty array to local storage and reloads the page
 
 function clearFavourites() {
     var index = "0";
@@ -209,4 +212,4 @@ function clearFavourites() {
     }
     localStorage.setItem("saveMyPlaces", JSON.stringify(data));
     window.location.reload();
-}
+};

@@ -1,3 +1,5 @@
+//makes the carousel run on the home page
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, {fullWidth: true, indicators: true});
@@ -7,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
   }
   });
+
+  //makes the compressed navbar toggle run in ipad & iphone breakpoints
+  
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
