@@ -1,6 +1,6 @@
 # Reboot Melbourne 
 
-Reboot Melbourne is a website for locals to rediscover their local community.
+Reboot Melbourne is a website for users to rediscover their local community.
 
 ## Usage
 * The user enters their search criteria including; suburb, Km radius and checks boxes for the type of activity they seek. 
