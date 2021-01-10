@@ -41,7 +41,7 @@ async function fetchWeather () {
     displayWeather.textContent = currentDate + "  " + minTemp + "  " + maxTemp + "  " + weatherText;
     displayWeather.appendChild(weatherIcon);
 
-}
+};
     
 fetchWeather();
 
