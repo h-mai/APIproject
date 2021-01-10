@@ -23,6 +23,7 @@ var secondRow = document.querySelector(".results-row2");
 // Add click to homepage submit button
 submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
+    document.querySelector(".progress").classList.remove("hide");
     apiResults = [];
     placeId = [];
     firstRow.innerHTML = "";
@@ -176,7 +177,7 @@ if (textQ != null) {
 }
 
 function informationContainer(imageLink, title, operating, address, rate, link, id) {
-
+    document.querySelector(".progress").classList.add("hide");
     var today = moment().format('dddd') + ":";
     var tempArray = "";
 
@@ -208,9 +209,6 @@ function informationContainer(imageLink, title, operating, address, rate, link, 
     /* after the title there is four catgories follow in the card "opening hours" , "address" , " rating" because there is Loop to add 
     this categories to card some of them the don't have any text, only a space and the rating only the title */
     categories = ['', ' ', ' Rating : ',];
-
-    // var firstRow = document.querySelector(".results-row1");
-    // var secondRow = document.querySelector(".results-row2");
 
     // create the div will include the card
 
@@ -309,8 +307,8 @@ function toggleStar(event) {
         data[1].push(apiResults[id].results.name);
         data[2].push(openingHours[id]);
         data[3].push(apiResults[id].results.formatted_address);
-        data[4].push(apiResults[id].results.rating);
-        data[5].push(apiResults[id].results.url);
+      data[4].push(apiResults[id].results.rating);
+        data[5].push(apiResults[id].results.url)
         localStorage.setItem("saveMyPlaces", JSON.stringify(data));
 
     } else {
@@ -330,6 +328,15 @@ function showForm() {
 };
 
 
+function showPreloader() {
+    document.querySelector(".progress").classList.remove("hide");
+    
+    if (firstRow.innerHTML != "" && secondRow.innerHTML != "") {
+
+        document.querySelector(".progress").classList.add("hide");
+    }
+  
+}
 
 
 

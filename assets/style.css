@@ -37,6 +37,10 @@ body, html {
 .inputRow{
     padding-left: 150px;
 }
+#suburbInput{
+    margin-top: 25px;
+}
+
 #checkBoxes{
     margin-left: 180px;
 }
@@ -60,6 +64,7 @@ body, html {
 
 .progress{
     position: relative;
+   
 }
 
 
