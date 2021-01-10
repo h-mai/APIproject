@@ -28,7 +28,6 @@ loginBtn.addEventListener("click", function (e) {
     e.preventDefault();
     var loginName = document.getElementById("login_name").value;
     var loginPassword = document.getElementById("loginPassword").value;
-    console.log(loginName, loginPassword);
     checkLogin(loginName, loginPassword);
 });
 

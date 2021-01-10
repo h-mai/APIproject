@@ -37,9 +37,6 @@ submitBtn.addEventListener("click", function (e) {
     var radius = document.getElementById("test5").value * 1000;
     var types = document.querySelectorAll('input[type="checkbox"]');
 
-    console.log(suburb, radius);
-    console.log(types);
-
     //Get the types checked by the user into an array
     var checkedTypes = [];
     var i;
@@ -49,29 +46,21 @@ submitBtn.addEventListener("click", function (e) {
         }
     }
 
-    console.log(checkedTypes);
-
     //Stringify the array of the checked types
     checkedTypes = checkedTypes.map(function (e) {
         return JSON.stringify(e);
     });
 
-    console.log(checkedTypes);
-
     //Edit the stringified array to be used in the query URL
     var typesForURL = checkedTypes.join("+").replace(/(['"])/g, "");
-    console.log(typesForURL);
 
     //Narrow the user choices to Australia
     var location = suburb + "+Victoria";
-    console.log(location);
-
 
     // Define the queryURL with the values selected by the user
     // var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+ typesForURL +"%2Bin%2B"+location+"&radius="+radius+"&key=" + Key ;
     var queryURL = "https://pfotis-eval-test.apigee.net/v1/cors-mock?query=" + typesForURL + "%2Bin%2B" + location + "&radius=" + radius + "&key=" + Key;
-    console.log(queryURL);
-
+    
     // Define the function to run the Google Place Search API query and get the places_ID
     async function fetchId() {
         var response = await fetch(queryURL)
@@ -80,8 +69,6 @@ submitBtn.addEventListener("click", function (e) {
         }
         response = await response.json()
 
-        console.log(response);
-
         for (var i = 0; i < 10; i++)
             placeId.push(response.results[i].place_id);
         fetchData();
@@ -89,8 +76,7 @@ submitBtn.addEventListener("click", function (e) {
     }
 
     fetchId();
-    console.log(placeId)
-
+   
     // Define a function to call the Google Place Detail API for each result 
     async function fetchData() {
         for (var i = 0; i < 10; i++) {
@@ -104,13 +90,12 @@ submitBtn.addEventListener("click", function (e) {
             response = await response.json()
 
             let photoRef = "ATtYBwLIMpWiZiOwfDYy1XGHZ1c-EhzV8hZG2GhB5JhZ90qnvMpfLT5oCDqV7So6Fpt9X6oCnuQGijeC6CjETpLxGiH3LhOg6zKAETrszrt2yWzWxdUxAX2jhz5cTeDTakip448RserT1iN_ukOPp2X3LhHvJeYOym4WiJ27pO5LlsHhzCh9"
-            console.log(response)
+        
             if (response.result.photos) {
                 photoRef = response.result.photos[0].photo_reference
             }
 
-            console.log(photoRef);
-
+          
             // Call the Google Photo API
 
             // fetch("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+res.result.photos[0].photo_reference+"&key=" + Key )
@@ -126,8 +111,6 @@ submitBtn.addEventListener("click", function (e) {
                 photoUrl: photo.url,
             })
         }
-
-        console.log(apiResults);
 
         //var openingHours = [];
 
@@ -293,11 +276,10 @@ function toggleStar(event) {
     var saveInfo = event.target.getAttribute("data-save");
     var id = event.target.dataset.id;
     event.target.classList.toggle("fa-star-o");
-    console.log(id);
+
     if (saveInfo == "not-saved") {
 
         /* change the status to "saved" to be able from the javascript in case the user unfavourite to delete from the localstorage
-        
          when the card saved as favourite from user then the "data-id" change from the spot get in to array in case the user unfavourite
         before change page*/
 
