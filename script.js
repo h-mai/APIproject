@@ -5,7 +5,7 @@ var openingHours = [];
 
 // add the key here 
 
-var Key = "";
+var Key = "AIzaSyDWXD4Z0EBFa-rotD5NSVVeRNQGjRhuTGg";
 
 window.addEventListener('keydown', function (e) {
     if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter') {
