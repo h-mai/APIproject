@@ -85,7 +85,7 @@ submitBtn.addEventListener("click", function (e) {
     // Define a function to call the Google Place Detail API for each result 
     async function fetchData() {
         for (var i = 0; i < length; i++) {
-                console.log(placeId[i]);
+        
             // await fetch("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=" + Key )
             var response = await fetch("https://pfotis-eval-prod.apigee.net/cors-place?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=" + Key)
             if (!response.ok) {
