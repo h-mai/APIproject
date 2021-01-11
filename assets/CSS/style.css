@@ -128,7 +128,6 @@ i.fas{
     margin-left: 170px;
 } 
 
-
 /* Media Queries */
 
 @media only screen and (max-width: 990px) {
@@ -139,8 +138,7 @@ i.fas{
         margin-left: 80px;
     }
     #radius{
-        margin-left: 50px;
-        
+        margin-left: 50px;  
     }  
     .aboutUs{
         width: 80%;
@@ -153,15 +151,7 @@ i.fas{
     } 
     
 }
-@media only screen and (max-width: 680px) {
-    /* .results-row1{
-        margin-left: 20px;
-    }
-    .results-row2{
-        margin-left: 20px;
-    }  */
-    
-}
+
 @media only screen and (max-width: 595px) {
     .inputRow{
         padding-left: 50px;
@@ -199,13 +189,10 @@ i.fas{
         padding-left: 20px;
         padding-right: 20px;
     }
-
     .aboutUs{
         width: 90%;
         margin-top: 35%;
-    }
-
-    
+    }    
 }
 
 
