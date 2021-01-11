@@ -6,7 +6,6 @@ var locationKey = "26216";
 
 var apikey = "YFR0KpqbKK1CPAGjVQVyrcgCstPpyZWU";
 
-//var queryURL = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 var queryURL = "https://cors-anywhere.herokuapp.com/http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 
 //DOM for storing weather data
@@ -21,15 +20,6 @@ async function fetchWeather () {
         throw Error("ERROR");
     }
     resp = await resp.json()
-
-    console.log(resp);
-
-    console.log(resp.DailyForecasts[0].Date)
-    console.log(resp.DailyForecasts[0].Temperature.Minimum.Value)
-    console.log(resp.DailyForecasts[0].Temperature.Maximum.Value)
-    console.log(resp.DailyForecasts[0].Day.IconPhrase)
-    console.log(resp.DailyForecasts[0].Day.Icon)
-
     
     var currentDate = moment().format('LLLL').slice(0, -8);
     var minTemp = "Min " + Math.trunc(resp.DailyForecasts[0].Temperature.Minimum.Value) + " °";
@@ -38,7 +28,6 @@ async function fetchWeather () {
     var weatherIcon = document.createElement("img");
     weatherIcon.src = "assets/images/weatherImages/" + resp.DailyForecasts[0].Day.Icon + ".png";
 
-    console.log(displayWeather)
     displayWeather.textContent = currentDate + "  " + minTemp + "  " + maxTemp + "  " + weatherText;
     displayWeather.appendChild(weatherIcon);
 
