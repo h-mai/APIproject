@@ -2,6 +2,7 @@
 var placeId = [];
 var apiResults = [];
 var openingHours = [];
+var length = 10;
 
 // add the key here 
 
@@ -68,8 +69,12 @@ submitBtn.addEventListener("click", function (e) {
             throw Error("ERROR");
         }
         response = await response.json()
-
-        for (var i = 0; i < 10; i++)
+        // in case the length or the response.results is smaller from the "length= 10 "
+        if(length >response.results.length){
+            length = response.results.length;
+        }
+        
+        for (var i = 0; i < length; i++)
             placeId.push(response.results[i].place_id);
         fetchData();
 
@@ -79,8 +84,8 @@ submitBtn.addEventListener("click", function (e) {
    
     // Define a function to call the Google Place Detail API for each result 
     async function fetchData() {
-        for (var i = 0; i < 10; i++) {
-
+        for (var i = 0; i < length; i++) {
+        
             // await fetch("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=" + Key )
             var response = await fetch("https://pfotis-eval-prod.apigee.net/cors-place?place_id=" + placeId[i] + "&fields=photos,name,opening_hours,formatted_address,rating,url&key=" + Key)
             if (!response.ok) {
@@ -114,7 +119,7 @@ submitBtn.addEventListener("click", function (e) {
 
         //var openingHours = [];
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < length; i++) {
             var hours = "not available";
             if (apiResults[i].results.opening_hours) {
                 var hours = apiResults[i].results.opening_hours.weekday_text
