@@ -4,31 +4,19 @@
     height: 90%;
     margin-top: 4px;
 }
-  
 body {
 display: flex;
 min-height: 100vh;
 flex-direction: column;
 }
-
 main {
 flex: 1 0 auto;
 }
-
-.aboutUs-container {
-    background-image: url("https://images.unsplash.com/photo-1470294402047-fc1b5f39bd99?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1354&q=80");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 2108.43px 1400px;
-    opacity:0.83;
-    color: white;
-}
-
-
-
 .page-footer {
     padding-top: 0px !important;
 }
+
+/* index.html page */
 
 .carousel{
     margin-bottom: 20px;
@@ -48,7 +36,6 @@ flex: 1 0 auto;
 #suburbInput{
     margin-top: 25px;
 }
-
 #checkBoxes{
     margin-left: 180px;
 }
@@ -69,10 +56,8 @@ flex: 1 0 auto;
 #checkCol{
     font-size: medium;
 }
-
 .progress{
     position: relative;
-   
 }
 
 /* Favourites page */
@@ -83,27 +68,32 @@ flex: 1 0 auto;
 #loginBtn{
     margin-bottom: 20px;
 }
-
 i.fas{
     color: #ff8a65;
 }
 #clearBtn{
     margin-bottom: 20px;
     background-color: #f44336;
-
 }
 
 /* About Us page */
 
-
+.aboutUs-container {
+    background-image: url("https://images.unsplash.com/photo-1470294402047-fc1b5f39bd99?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1354&q=80");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2108.43px 1400px;
+    opacity:0.83;
+    color: white;
+}
 /* About Us Paragraph */
+
 .aboutUs{
     margin: auto;
     margin-top: 20%;
     width: 50%;
     font-size: x-large;
 }
-
 
 /* Style for the cards-places */
 
@@ -115,27 +105,29 @@ i.fas{
     width: 100%;
     height: 140px;
 }
-
 .card-content{
     max-height: 100% !important;
 }
-
 .card-title {
     margin-bottom: 20px !important;
 }
-
 .placeDetails {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-
 .fa{
     float: right;
 }
 .fa-star{
     color: gold;
 }
+.results-row1{
+    margin-left: 170px;
+}
+.results-row2{
+    margin-left: 170px;
+} 
+
 
 /* Media Queries */
 
@@ -148,22 +140,27 @@ i.fas{
     }
     #radius{
         margin-left: 50px;
-      
+        
     }  
-    #favForm{
-        margin-left: 175px;
-    }
- 
     .aboutUs{
         width: 80%;
     }
-   
+    .results-row1{
+        margin-left: 0px;
+    }
+    .results-row2{
+        margin-left: 0px;
+    } 
+    
 }
 @media only screen and (max-width: 680px) {
-    #favForm{
-        margin-left: 50px;
+    /* .results-row1{
+        margin-left: 20px;
     }
-
+    .results-row2{
+        margin-left: 20px;
+    }  */
+    
 }
 @media only screen and (max-width: 595px) {
     .inputRow{
@@ -178,10 +175,6 @@ i.fas{
     #flindersStreet 
     {
         max-width: auto;
-    }
-
-    #favForm{
-        margin-left: 10px;
     }
     .aboutUs{
         margin-top: 28%;
