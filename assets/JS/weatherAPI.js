@@ -4,7 +4,7 @@
 //Accuweather API Key and Location key for Melbourne City
 var locationKey = "26216";
 
-var apikey = "YFR0KpqbKK1CPAGjVQVyrcgCstPpyZWU";
+var apikey = "";
 
 var queryURL = "https://cors-anywhere.herokuapp.com/http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=" + apikey + "&language=en-us&details=false&metric=true"
 
