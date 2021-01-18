@@ -6,7 +6,7 @@ var length = 10;
 
 // add the key here 
 
-var Key = "";
+var Key = "AIzaSyAPigCnTc8xvYuSuxWxiD9_0j72btyTRmI";
 
 // Disable Enter key for input
 window.addEventListener('keydown', function (e) {
